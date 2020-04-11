@@ -1075,7 +1075,7 @@ class Notifier( object ) :
             row = curs.fetchone()
             if row is None : break
 
-            self._errors.append( { "id" : row[0], "msg" : "BMRB accession numbers in ETS/OneDep don't match:  %s vs %s" \
+            self._errors.append( { "id" : row[0], "msg" : "BMRB accession numbers in ETS/OneDep don't match: %s vs %s" \
                 % (row[1],row[2]) } )
 
         qry = "select id,bmrbid,pdbid,etspdbid,status,etsstatus from onedep where pdbid<>etspdbid order by id"
@@ -1105,7 +1105,6 @@ class Notifier( object ) :
                     break
 
             if not found :
-
 
                 self._errors.append( { "id" : row[0], "msg" : "%s PDB accession number %s in ETS, %s in OneDep" \
                     % (row[1],row[3],row[2]) } )
