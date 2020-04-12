@@ -18,9 +18,9 @@ import starobj
 from .tagmap import readcsv
 from .mmcif import CifReader
 from .nmrstar import BMRBEntry
-#from .datastruct import CifCol, StarCol, StarTable
-#from .convert import OneDepToBmrb
-#from .chemshifts import ChemShiftHandler, ChemShifts
+from .datastruct import CifCol, StarCol, StarTable
+from .convert import OneDepToBmrb
+from .chemshifts import ChemShiftHandler, ChemShifts
 
 # simple timings
 #
@@ -58,9 +58,9 @@ def sanitize( value ) :
 __all__ = [ "sas", "starobj", 
     "TEMP_TABLE_NAME", "TEMP_KEY_COL_NAME", "STD_CHEM_COMPS",
     "sanitize", "timer", 
-#    "readcsv",
-#    "CifReader", "BMRBEntry", 
-#    "CifCol", "StarCol", "StarTable", 
-#    "ChemShiftHandler", "ChemShifts", 
-#    "OneDepToBmrb",
+    "readcsv",
+    "CifReader", "BMRBEntry", 
+    "CifCol", "StarCol", "StarTable", 
+    "ChemShiftHandler", "ChemShifts", 
+    "OneDepToBmrb",
     ]

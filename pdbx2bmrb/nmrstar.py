@@ -1143,7 +1143,7 @@ class BMRBEntry( object ) :
 #
 
         sql = 'update "Entry" set "Dep_release_code_nmr_exptl"="Dep_release_code_chemical_shifts",' \
-            + '"Original_NMR_STAR_version"="NMR_STAR_version","Assigned_BMRB_ID"=:id,"Assigned_PDB_ID"=:pdbid,' \
+            + '"Original_NMR_STAR_version"="NMR_STAR_version","Assigned_BMRB_ID"="ID","Assigned_PDB_ID"=:pdbid,' \
             + '"Type"=:typ,"Version_type"=:vers,"Origination"=:org where "ID"=:entryid'
 
         params["pdbid"] = self.pdbid
@@ -1164,8 +1164,8 @@ class BMRBEntry( object ) :
 # delete ref. to self
 #
         params["db"] = "BMRB"
-        sql = 'delete from "Related_entries" where "Database_name"=:db and "Database_accession_code"=:id ' \
-            + 'and "Entry_ID"=:id'
+        sql = 'delete from "Related_entries" where "Database_name"=:db and "Database_accession_code"=:entryid ' \
+            + 'and "Entry_ID"=:entryid'
 
         if self._verbose :
             sys.stdout.write( sql + "\n" )
@@ -1192,7 +1192,7 @@ class BMRBEntry( object ) :
 #
         params["db"] = "PDB"
         params["rel"] = "BMRB Entry Tracking System"
-        sql = 'update "Related_entries" set "Relationship"=:rel where "Database_name"=:db and "Entry_ID"=:id'
+        sql = 'update "Related_entries" set "Relationship"=:rel where "Database_name"=:db and "Entry_ID"=:entryid'
 
         if self._verbose :
             sys.stdout.write( sql + "\n" )

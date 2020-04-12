@@ -19,8 +19,9 @@
    (Warnings about unmapped tags go to `stdout`.)
 
 4. Try converting a test file:\
-    `./__main__.py -c pdbx2bmrb.conf --no-ets -i D_1001300020_model-release_P1.cif.V1 -s D_1001300020_cs-release_P1.cif.V1`\
-   (Files from 3. are all listed in `pbdx2bmrb.conf`.)
+    `./__main__.py -c pdbx2bmrb.conf --no-ets -i D_1001300020_model-release_P1.cif.V1 -s D_1001300020_cs-release_P1.cif.V1 -v`\
+  - You should end up with `bmr30000_3.str` file and timing info from `-v`.
+  - Files from 3. are all listed in `pbdx2bmrb.conf`.
 
 ## build
 
