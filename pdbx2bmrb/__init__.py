@@ -8,16 +8,16 @@ import sys
 SAS_PATH = "/share/dmaziuk/projects/sas/SAS/python"
 sys.path.append( SAS_PATH )
 
+import sas
+
 STAROBJ_PATH = "/share/dmaziuk/projects/starobj"
 sys.path.append( STAROBJ_PATH )
 
-import sas
+import starobj
 
-#import starobj
-
-#from .tagmap import readcsv
-#from .mmcif import CifReader
-#from .nmrstar import BMRBEntry
+from .tagmap import readcsv
+from .mmcif import CifReader
+from .nmrstar import BMRBEntry
 #from .datastruct import CifCol, StarCol, StarTable
 #from .convert import OneDepToBmrb
 #from .chemshifts import ChemShiftHandler, ChemShifts
