@@ -1272,6 +1272,74 @@ class BMRBEntry( object ) :
         if self.verbose :
             sys.stdout.write( "%s.fix_entity_assembly()\n" % (self.__class__.__name__,) )
 
+# generate dummy name as entity names can get long and are here multiple times
+#
+        params = []
+        sql = 'select "Entity_ID","Asym_ID","PDB_chain_ID" from "Entity_assembly"' \
+            + ' order by "Entity_ID","Asym_ID","PDB_chain_ID"'
+        rs = self._db.query( sql )
+        i = 0
+        for row in rs :
+            if self.verbose :
+                pprint.pprint( row )
+            i += 1
+            params.append( { "num" : i,
+                "name" : ("unit_%s" % (i,)),
+                "aid" : 1,
+                "id" : self.entryid,
+                "eid" : row[0],
+                "asym" : row[1],
+                "chain" : row[2] } )
+
+
+        sql = 'update "Entity_assembly" set "ID"=:num,"Entity_assembly_name"=:name,' \
+            + '"Assembly_ID"=:aid where "Entry_ID"=:id and "Entity_ID"=:eid ' \
+            + 'and "Asym_ID"=:asym and "PDB_chain_ID"=:chain'
+        for i in params :
+            if self.verbose :
+                sys.stdout.write( sql + "\n" )
+                pprint.pprint( i )
+            rc = self._db.execute( sql, i )
+            if self.verbose :
+                sys.stdout.write( "=> %s rows updated\n" % (rc.rowcount,) )
+
+        sql = 'update "Entity_assembly" set "Entity_label"=' \
+            + '(select "Sf_framecode" from "Entity" where "ID"="Entity_assembly"."Entity_ID"' \
+            + ' and "Entry_ID"="Entity_assembly"."Entry_ID")'
+        if self.verbose :
+            sys.stdout.write( sql + "\n" )
+            pprint.pprint( i )
+        rc = self._db.execute( sql, i )
+        if self.verbose :
+            sys.stdout.write( "=> %s rows updated\n" % (rc.rowcount,) )
+
+        sql = 'update "PDBX_poly_seq_scheme" set "Entity_assembly_ID"=' \
+            + '(select "ID" from "Entity_assembly" where "Entity_ID"="PDBX_poly_seq_scheme"."Entity_ID"' \
+            + ' and "Asym_ID"="PDBX_poly_seq_scheme"."Asym_ID" and "PDB_Chain_ID"="PDBX_poly_seq_scheme"."PDB_chain_ID"' \
+            + ' and "Entry_ID"="PDBX_poly_seq_scheme"."Entry_ID")'
+        if self.verbose :
+            sys.stdout.write( sql + "\n" )
+            pprint.pprint( i )
+        rc = self._db.execute( sql, i )
+        if self.verbose :
+            sys.stdout.write( "=> %s rows updated\n" % (rc.rowcount,) )
+
+        sql = 'update "PDBX_nonpoly_scheme" set "Entity_assembly_ID"=' \
+            + '(select "ID" from "Entity_assembly" where "Entity_ID"="PDBX_nonpoly_scheme"."Entity_ID"' \
+            + ' and "Asym_ID"="PDBX_nonpoly_scheme"."Asym_ID" and "PDB_Chain_ID"="PDBX_nonpoly_scheme"."PDB_strand_ID"' \
+            + ' and "Entry_ID"="PDBX_nonpoly_scheme"."Entry_ID")'
+        if self.verbose :
+            sys.stdout.write( sql + "\n" )
+            pprint.pprint( i )
+        rc = self._db.execute( sql, i )
+        if self.verbose :
+            sys.stdout.write( "=> %s rows updated\n" % (rc.rowcount,) )
+
+
+#        self.verbose = False
+        return
+
+#DELETEME
         eids = []
         params = { "id" : self.entryid }
         sql = 'select distinct "Entity_ID","Asym_ID","PDB_chain_ID" from "PDBX_poly_seq_scheme" ' \
@@ -1355,7 +1423,7 @@ class BMRBEntry( object ) :
             if self.verbose :
                 sys.stdout.write( "=> %s rows updated\n" % (rc.rowcount,) )
 
-#        self.verbose = False
+        self.verbose = False
 
     ################################################################################################
     #

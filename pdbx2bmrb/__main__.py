@@ -123,8 +123,10 @@ def convert( config, cif, verbose = False ) :
 #            star.make_assembly( cifdb = cif, tables = saveframes[s] )
 
         elif s == "assembly" :
+#            star.verbose = True
             star.make_unique_saveframe( cifdb = cif, tables = saveframes[i][s], category = s,
                 freetable = "Assembly", idtag = "Assembly_ID" )
+#            star.verbose = False
 
         elif s == "entity" :
 #            star.verbose = True
