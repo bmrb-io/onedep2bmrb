@@ -63,7 +63,7 @@ dst = os.path.realpath( os.path.join( os.path.split( __file__ )[0], "__main__.py
 shutil.copy2( main, dst )
 
 setuptools.setup( name = "pdbx2bmrb", 
-    version = "1.1", 
+    version = "1.2", 
     packages = setuptools.find_packages(), 
     py_modules = ["sas", "__main__"] )
 

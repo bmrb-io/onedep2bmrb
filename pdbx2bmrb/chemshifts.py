@@ -336,7 +336,9 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
 
     def data( self, tag, tagline, val, valline, delim, inloop ) :
         if not self._in_cs :
-            if (tag[:17] == "_Atom_chem_shift.") or (tag[:35] == "_pdbx_nmr_assigned_chem_shift_list.") :
+            if (tag[:17] == "_Atom_chem_shift.") \
+            or (tag[:35] == "_pdbx_nmr_assigned_chem_shift_list.") \
+            or (tag[:26] == "_Assigned_chem_shift_list." ) :
                 self._in_cs = True
 
         if self._in_cs :
@@ -346,14 +348,17 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
                 if len( val ) < 1 : val = None
                 if val in (".", "?") : val = None
 
-            if tag[:35] == "_pdbx_nmr_assigned_chem_shift_list." :
+            if (tag[:35] == "_pdbx_nmr_assigned_chem_shift_list.") \
+            or (tag[:26] == "_Assigned_chem_shift_list." ) :
                 if self._lists[self._blockid] is None : 
                     self._lists[self._blockid] = {}
 
-            if tag == "_pdbx_nmr_assigned_chem_shift_list.id" : 
+            if (tag == "_pdbx_nmr_assigned_chem_shift_list.id") \
+            or (tag == "_Assigned_chem_shift_list.ID") :
                 self._lists[self._blockid]["id"] = val
 
-            if tag == "_pdbx_nmr_assigned_chem_shift_list.data_file_name" : 
+            if (tag == "_pdbx_nmr_assigned_chem_shift_list.data_file_name") \
+            or (tag == "_Assigned_chem_shift_list.Data_file_name") : 
                 self._lists[self._blockid]["filename"] = val
 
             if inloop :
