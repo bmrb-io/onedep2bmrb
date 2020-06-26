@@ -1100,7 +1100,7 @@ class BMRBEntry( object ) :
 #
 # we don't really know what do with most of them but we'll keep them
 #
-
+        subtypes = []
         params = {} 
         for (mid,method,) in self._db.iter_values( table = "Entry_experimental_methods", columns = ("ID","Method"), entryid = self.entryid ) :
 
@@ -1110,6 +1110,7 @@ class BMRBEntry( object ) :
             m = re.search( r"\b(\w+)\s+NMR\b", method, re.IGNORECASE )
 
             if m : 
+                subtypes.append( m.group( 1 ) )
                 params["id"] = mid
                 params["entryid"] = self.entryid
                 params["sub"] = m.group( 1 )
@@ -1127,16 +1128,25 @@ class BMRBEntry( object ) :
 
 # free tags -- not filled in if it's not an NMR entry: that should never happen(tm)
 #
-                sql = 'update "Entry" set "Experimental_method"=:meth,"Experimental_method_subtype"=:sub where "ID"=:entryid'
+# 2020-06-26: in BMRB entries "main" method should always be NMR. 
+# subtype, if there's more than one, will be null
+#
+        params["entryid"] = self.entryid
+        params["meth"] = "NMR"
+        if len( subtypes ) != 1 :
+            sql = 'update "Entry" set "Experimental_method"=:meth where "ID"=:entryid'
+        else :
+            sql = 'update "Entry" set "Experimental_method"=:meth,"Experimental_method_subtype"=:sub where "ID"=:entryid'
+            params["sub"] = subtypes[0]
 
-                if self._verbose :
-                    sys.stdout.write( sql + "\n" )
-                    pprint.pprint( params )
+        if self._verbose :
+            sys.stdout.write( sql + "\n" )
+            pprint.pprint( params )
 
-                rc = self._db.execute( sql, params )
+        rc = self._db.execute( sql, params )
 
-                if self._verbose :
-                    sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
+        if self._verbose :
+            sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
 
 
 # these need to be set regardless
