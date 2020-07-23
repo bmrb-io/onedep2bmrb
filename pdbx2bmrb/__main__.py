@@ -369,7 +369,6 @@ if __name__ == "__main__" :
 
 #     pretty-print NMR-STAR model file
 #
-
             with pdbx2bmrb.timer( "pretty-print header", verbose = options.verbose ) :
                 if options.outfile is None :
                     mdlfile = "bmr%s.model.str" % (star.entryid,)

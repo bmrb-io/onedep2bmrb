@@ -5,12 +5,12 @@ from __future__ import absolute_import
 
 import sys
 
-SAS_PATH = "/share/dmaziuk/projects/sas/SAS/python"
+SAS_PATH = "/share/dmaziuk/projects/github/SAS/python"
 sys.path.append( SAS_PATH )
 
 import sas
 
-STAROBJ_PATH = "/share/dmaziuk/projects/starobj"
+STAROBJ_PATH = "/share/dmaziuk/projects/github/starobj"
 sys.path.append( STAROBJ_PATH )
 
 import starobj

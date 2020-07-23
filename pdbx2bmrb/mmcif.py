@@ -233,7 +233,7 @@ class CifReader( sas.ContentHandler, sas.ErrorHandler ) :
         return True
     def warning( self, line, msg ) :
         sys.stderr.write("parser warning in line %s : %s\n" % (line, msg))
-        return True
+        return False
 
     def startLoop( self, line ) :
 #        print "== start loop"

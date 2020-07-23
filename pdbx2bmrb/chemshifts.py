@@ -19,15 +19,8 @@ import pdbx2bmrb
 #
 class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler ) :
 
-# chemical shifts file can be anything from a complete BMRB entry to a bare assignments table.
-# as of 2017-10-18 OneDep wraps each "CS table" is in its own data block that ends with
-#
-# _pdbx_nmr_assigned_chem_shift_list.entry_id         ABCD
-# _pdbx_nmr_assigned_chem_shift_list.id               N
-# _pdbx_nmr_assigned_chem_shift_list.data_file_name   original-upload-filename
-#
-# we need the last 2 (entry id better be the same as in the model)  and contents of _Atom_chem_shift loops. 
-# ignore everything else.
+# as of April 2020 chemical shifts file is a "proper" BMRB file except: 
+# as of 2017-10-18 OneDep wraps each "CS table" is in its own data block
 #
 # 2020-04-12 see DAOTHER-2874 in Jira
 # updated OneDep code should instead create 
@@ -38,8 +31,7 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
 # _Assigned_chem_shift_list.ID              1
 # _Assigned_chem_shift_list.Data_file_name  D_800262_cs.str
 #
-# -- for all CS files or just NEF ones?
-# TODO: change this when that makes it into production
+# -- for all CS files
 #
 
     CS_COLS = [ "ID",
@@ -95,8 +87,8 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
     ID_UPD = 'update "Atom_chem_shift" set "Assigned_chem_shift_list_ID"=:id where "Assigned_chem_shift_list_ID" is NULL'
     SF_UPD = 'update "Atom_chem_shift" set "Sf_ID"=:sfid where "Assigned_chem_shift_list_ID"=:id'
 
-    TEMPLISTID = 1000
-    TEMPLISTSTR = "TEMP_CSL_ID_CHANGEME"
+#    TEMPLISTID = 1000
+#    TEMPLISTSTR = "TEMP_CSL_ID_CHANGEME"
 
     # reuse SAS DDL parser for this as it supports multiple data blocks etc.
     #
@@ -164,34 +156,12 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
             sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
 
 # CS lists
-# at this point list_ID is the upload file name
+# at this point list_ID is id or the upload file name
 #
         cslists = {}
         for i in self._lists.keys() :
             if self._lists[i]["has_shifts"] :
                 cslists[i] = self._lists[i]
-
-        names = set()
-        ids = set()
-        for i in cslists.keys() :
-            if cslists[i]["id"] in ids :
-                sys.stderr.write( "ERR: Dulicate Assigned_chem_shift_list_ID %s\n" % (cslists[i]["id"],) )
-                pprint.pprint( cslists )
-                raise Exception( "Cannot map CS lists" )
-            else : 
-                ids.add( cslists[i]["id"] )
-
-            if cslists[i]["filename"] in names :
-                sys.stderr.write( "ERR: Dulicate upload filename for Atom_chem_shift %s\n" % (cslists[i]["filename"],) )
-                pprint.pprint( cslists )
-                raise Exception( "Cannot map CS lists" )
-            else : 
-                ids.add( cslists[i]["filename"] )
-
-        if self._verbose :
-            sys.stdout.write( ">>>>>>>>>>>>>>>>>>>>>>>\n" )
-            pprint.pprint( cslists )
-            sys.stdout.write( "<<<<<<<<<<<<<<<<<<<<<<<\n" )
 
 # only one CS list and no id
 # (sometimes they come with only one CS list whose id is not 1, can't change that
@@ -202,6 +172,31 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
                 if cslists[i]["id"] is None :
                     cslists[i]["id"] = 1
 
+#
+#
+#        names = set()
+#        ids = set()
+#        for i in cslists.keys() :
+#            if cslists[i]["id"] in ids :
+#                sys.stderr.write( "ERR: Dulicate Assigned_chem_shift_list_ID %s\n" % (cslists[i]["id"],) )
+#                pprint.pprint( cslists )
+#                raise Exception( "Cannot map CS lists" )
+#            else : 
+#                ids.add( cslists[i]["id"] )
+
+#            if cslists[i]["filename"] in names :
+#                sys.stderr.write( "ERR: Dulicate upload filename for Atom_chem_shift %s\n" % (cslists[i]["filename"],) )
+#                pprint.pprint( cslists )
+#                raise Exception( "Cannot map CS lists" )
+#            else : 
+#                names.add( cslists[i]["filename"] )
+
+        if self._verbose :
+            sys.stdout.write( ">>>>>>>>>>>>>>>>>>>>>>>\n" )
+            pprint.pprint( cslists )
+            sys.stdout.write( "<<<<<<<<<<<<<<<<<<<<<<<\n" )
+
+
 #            sql = 'update "Atom_chem_shift" set "Assigned_chem_shift_list_ID"=1'
 #            if self._verbose:
 #                sys.stdout.write( sql )
@@ -210,19 +205,17 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
 #                sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
 
 #        else :
-        sql = 'update "Atom_chem_shift" set "Assigned_chem_shift_list_ID"=:new where "Assigned_chem_shift_list_ID"=:old'
-        for i in cslists.keys() :
-            if self._verbose:
-                sys.stdout.write( "%s -- %s <- %s\n" % (sql,cslists[i]["id"],cslists[i]["filename"]) )
-            rc = self._entry._db.execute( sql, { "new" : cslists[i]["id"], "old" : cslists[i]["filename"]} )
-            if self._verbose :
-                sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
-
+#        sql = 'update "Atom_chem_shift" set "Assigned_chem_shift_list_ID"=:new where "Assigned_chem_shift_list_ID"=:old'
+#        for i in cslists.keys() :
+#            if self._verbose:
+#                sys.stdout.write( "%s -- %s <- %s\n" % (sql,cslists[i]["id"],cslists[i]["filename"]) )
+#            rc = self._entry._db.execute( sql, { "new" : cslists[i]["id"], "old" : cslists[i]["filename"]} )
+#            if self._verbose :
+#                sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
 
         if self._verbose :
             sys.stdout.write( ">>>>>>> SHIFTS NOW\n" )
             self._dump_shifts()
-
 
         rs = self._entry._db.query( 'select count(*) from "Atom_chem_shift" where "Assigned_chem_shift_list_ID" is NULL' )
         row = rs.next()
@@ -235,10 +228,10 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
 # try to figure out the saveframes:
 # if everything went well, _Assigned_chem_shift_list.Data_file_name will match cslists[i]["filename"]
 #
-        rs = self._entry._db.query( 'select "Data_file_name","Sf_ID" from "Assigned_chem_shift_list"' )
+        rs = self._entry._db.query( 'select "ID","Sf_ID" from "Assigned_chem_shift_list"' )
         for row in rs :
             for i in cslists.keys() :
-                if row[0] == cslists[i]["filename"] :
+                if row[0] == cslists[i]["id"] :
                     cslists[i]["sfid"] = row[1]
 
         if self._verbose :
@@ -382,12 +375,13 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
 # set to a unique-ish string, fix in endData()
 #
 
-                        if "Assigned_chem_shift_list_ID" in self._stmt.keys() :
-                            if self._verbose :
-                                sys.stderr.write( "table has CS List ID: %s\n" % (self._stmt["Assigned_chem_shift_list_ID"],) )
-                                sys.stderr.write( "changing to %s\n" % (self.TEMPLISTSTR,) )
-
-                        self._stmt["Assigned_chem_shift_list_ID"] = self.TEMPLISTSTR
+#                        if "Assigned_chem_shift_list_ID" in self._stmt.keys() :
+#                            if self._verbose :
+#                                sys.stderr.write( "table has CS List ID: %s\n" % (self._stmt["Assigned_chem_shift_list_ID"],) )
+#                                sys.stderr.write( "changing to %s\n" % (self.TEMPLISTSTR,) )
+#
+#                        self._stmt["Assigned_chem_shift_list_ID"] = self.TEMPLISTSTR
+                        self._stmt["Assigned_chem_shift_list_ID"] = self._lists[self._blockid]["id"]
 
                         self._stmt.insert()
                         self._lists[self._blockid]["has_shifts"] = True
@@ -399,11 +393,12 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
 
     def endLoop( self, line ) :
         if len( self._stmt ) > 0 :
-            if "Assigned_chem_shift_list_ID" in self._stmt.keys() :
-                if self._verbose :
-                    sys.stderr.write( "(endloop) table has CS List ID: %s\n" % (self._stmt["Assigned_chem_shift_list_ID"],) )
-                    sys.stderr.write( "(endloop) changing to %s\n" % (self.TEMPLISTSTR,) )
-            self._stmt["Assigned_chem_shift_list_ID"] = self.TEMPLISTSTR
+#            if "Assigned_chem_shift_list_ID" in self._stmt.keys() :
+#                if self._verbose :
+#                    sys.stderr.write( "(endloop) table has CS List ID: %s\n" % (self._stmt["Assigned_chem_shift_list_ID"],) )
+#                    sys.stderr.write( "(endloop) changing to %s\n" % (self.TEMPLISTSTR,) )
+            self._stmt["Assigned_chem_shift_list_ID"] = self._lists[self._blockid]["id"]
+#self.TEMPLISTSTR
             self._stmt.insert()
             self._stmt.clear()
         return False
@@ -419,28 +414,28 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
         else :
             if self._verbose :
                 pprint.pprint( self._lists[self._blockid] )
-            newid = None
-            if self._lists[self._blockid].has_key( "id" ) :
-                newid = self._lists[self._blockid]["id"]
-            if newid is not None :
-                if str( newid ).strip() == "" :
-                    newid = None
-            if newid is None :
-                if self._lists[self._blockid].has_key( "filename" ) :
-                    newid =  self._lists[self._blockid]["filename"]
-            if newid is not None :
-                if str( newid ).strip() == "" :
-                    newid = None
-            if newid is None :
-                raise Exception( "No CS list ID or filename!" )
-
-            sql = 'update "Atom_chem_shift" set "Assigned_chem_shift_list_ID"=:new where "Assigned_chem_shift_list_ID"=:old'
-            if self._verbose :
-                sys.stdout.write( "%s: %s <- %s\n" % (sql,newid,self.TEMPLISTSTR ) )
-            rc = self._entry._db.execute( sql, { "new" : newid, "old" : self.TEMPLISTSTR } )
-            if self._verbose :
-                sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
-            if self._verbose :
+#            newid = None
+#            if self._lists[self._blockid].has_key( "id" ) :
+#                newid = self._lists[self._blockid]["id"]
+#            if newid is not None :
+#                if str( newid ).strip() == "" :
+#                    newid = None
+#            if newid is None :
+#                if self._lists[self._blockid].has_key( "filename" ) :
+#                    newid =  self._lists[self._blockid]["filename"]
+#            if newid is not None :
+#                if str( newid ).strip() == "" :
+#                    newid = None
+#            if newid is None :
+#                raise Exception( "No CS list ID or filename!" )
+#
+#            sql = 'update "Atom_chem_shift" set "Assigned_chem_shift_list_ID"=:new where "Assigned_chem_shift_list_ID"=:old'
+#            if self._verbose :
+#                sys.stdout.write( "%s: %s <- %s\n" % (sql,newid,self.TEMPLISTSTR ) )
+#            rc = self._entry._db.execute( sql, { "new" : newid, "old" : self.TEMPLISTSTR } )
+#            if self._verbose :
+#                sys.stdout.write( "=> %d rows updated\n" % (rc.rowcount,) )
+#            if self._verbose :
                 self._dump_shifts()
 
         return
@@ -578,9 +573,13 @@ class ChemShifts( object ) :
 #
         ids = []
         sql = 'select "ID" from "Entity_assembly" where "Entry_ID"=:entryid'
+        if self._verbose :
+            sys.stdout.write( "%s : %s\n" % (sql,self._entry.entryid,) )
         rs = self._entry._db.query( sql, params = { "entryid" : self._entry.entryid } )
         for row in rs :
 
+            if self._verbose :
+                pprint.pprint( row )
 #  (just in case it isn't 1)
 #
             ids.append( row[0] )

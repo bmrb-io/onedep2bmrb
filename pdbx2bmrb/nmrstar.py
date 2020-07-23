@@ -169,7 +169,9 @@ class BMRBEntry( object ) :
     #
     def make_unique_saveframe( self, cifdb, tables, category, freetable, idtag ) :
 
-        if self.verbose : sys.stdout.write( "%s.make_unique_saveframe(%s, %s)\n" % (self.__class__.__name__,category,freetable) )
+        if self.verbose : 
+            sys.stdout.write( "%s.make_unique_saveframe(%s, %s)\nw/ables:\n" % (self.__class__.__name__,category,freetable) )
+            pprint.pprint( tables )
 
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
         assert isinstance( tables, collections.Iterable )

@@ -15,9 +15,9 @@ import pprint
 
 from optparse import OptionParser
 
-_UP = os.path.realpath( os.path.join( os.path.split( __file__ )[0], ".." ) )
-sys.path.append( _UP )
-import pdbx2bmrb
+#_UP = os.path.realpath( os.path.join( os.path.split( __file__ )[0], ".." ) )
+#sys.path.append( _UP )
+#import pdbx2bmrb
 
 #########################################################################################
 # read tag map from CSV to DB table
@@ -26,7 +26,7 @@ def readcsv( mapdb, filename, stardict, verbose = False ) :
     if verbose : sys.stdout.write( "* readcsv\n" )
 
     assert isinstance( mapdb, sqlite3.Connection )
-    assert isinstance( stardict, pdbx2bmrb.starobj.StarDictionary )
+#    assert isinstance( stardict, pdbx2bmrb.starobj.StarDictionary )
 
     curs = mapdb.cursor()
     sql = "drop table if exists tagmap"
