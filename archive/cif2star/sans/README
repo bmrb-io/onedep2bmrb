@@ -1,0 +1,35 @@
+<p><b>
+sans++: callback-based STAR parsers.
+</b>
+
+<p>
+
+<pre>
+  class p : public ErrorHandler, public ContentHandler2 {
+    ... // implement callback methods specified by
+        // error and content handler interfaces
+  }
+
+int main( int argc, char **argv ) {
+    p *test = new p;
+    STARLexer *lex = new STARLexer;
+    lex->setIn( stdin );
+    SansParser2 par( lex, test, test );
+    par.parse();
+    delete lex;
+    delete test;
+    return 0;
+}
+</pre>
+ See <b>test_parser2.cc</b> for a complete usage example.
+
+<p>
+ API documentation: see header files or run "make docs" to
+ generate HTML pages in doc/api (you'll need doxygen).
+ 
+<p><b>
+Requirements
+</b>
+<p>
+Recent version of GCC (g++ v. 3.3.x or 4.x) and flex (2.5.4).
+

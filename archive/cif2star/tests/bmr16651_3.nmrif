@@ -1,0 +1,1326 @@
+data_16651
+# 
+_Entry_interview.Sf_category                        entry_interview 
+_Entry_interview.Sf_framecode                       entry_interview 
+_Entry_interview.Entry_ID                           16651 
+_Entry_interview.ID                                 1 
+_Entry_interview.PDB_deposition                     no 
+_Entry_interview.BMRB_deposition                    yes 
+_Entry_interview.View_mode                          'BMRB Only' 
+_Entry_interview.Use_previous_BMRB_entry            . 
+_Entry_interview.Previous_BMRB_entry_used           . 
+_Entry_interview.Previous_BMRB_entry_owner          . 
+_Entry_interview.Structural_genomics                no 
+_Entry_interview.Ligands                            no 
+_Entry_interview.Non_standard_residues              yes 
+_Entry_interview.Constraints                        no 
+_Entry_interview.Assigned_chem_shifts               yes 
+_Entry_interview.Coupling_constants                 no 
+_Entry_interview.Chem_shift_anisotropy              no 
+_Entry_interview.Heteronucl_NOEs                    no 
+_Entry_interview.Heteronucl_T1_relaxation           no 
+_Entry_interview.Heteronucl_T2_relaxation           no 
+_Entry_interview.Heteronucl_T1rho_relaxation        no 
+_Entry_interview.Order_parameters                   no 
+_Entry_interview.Dynamics_trajectory                . 
+_Entry_interview.Movie                              . 
+_Entry_interview.Residual_dipolar_couplings         no 
+_Entry_interview.H_exchange_rate                    no 
+_Entry_interview.H_exchange_protection_factors      no 
+_Entry_interview.Chem_rate_constants                . 
+_Entry_interview.Spectral_peak_lists                no 
+_Entry_interview.Dipole_dipole_couplings            no 
+_Entry_interview.Quadrupolar_couplings              no 
+_Entry_interview.Homonucl_NOEs                      no 
+_Entry_interview.Dipole_dipole_relaxation           no 
+_Entry_interview.DD_cross_correlation               no 
+_Entry_interview.Dipole_CSA_cross_correlation       no 
+_Entry_interview.Binding_constants                  . 
+_Entry_interview.PKa_value_data_set                 no 
+_Entry_interview.D_H_fractionation_factors          no 
+_Entry_interview.Theoretical_chem_shifts            no 
+_Entry_interview.Spectral_density_values            no 
+_Entry_interview.Timedomain_data                    no 
+_Entry_interview.Molecular_interactions             no 
+_Entry_interview.Secondary_structure_orientations   no 
+_Entry_interview.Metabolite_coordinates             no 
+_Entry_interview.Mass_spec_data                     no 
+_Entry_interview.Other_kind_of_data                 no 
+# 
+_Deposited_data_files.Sf_category                     deposited_data_files 
+_Deposited_data_files.Sf_framecode                    deposited_data_files 
+_Deposited_data_files.Entry_ID                        16651 
+_Deposited_data_files.ID                              1 
+_Deposited_data_files.Atomic_coordinate_file_name     tRNA-ARG-ACG-s2C.pdb 
+_Deposited_data_files.Atomic_coordinate_file_syntax   pdb 
+_Deposited_data_files.Constraint_file_name            hbonds-restraints 
+_Deposited_data_files.Constraint_file_syntax          . 
+_Deposited_data_files.Precheck_flag                   . 
+_Deposited_data_files.Validate_flag                   . 
+# 
+loop_
+_Upload_data.Data_file_ID 
+_Upload_data.Data_file_name 
+_Upload_data.Data_file_Sf_category 
+_Upload_data.Data_file_syntax 
+_Upload_data.Data_file_immutable_flag 
+_Upload_data.Entry_ID 
+_Upload_data.Deposited_data_files_ID 
+1 tRNA-ARG-ACG-s2C.pdb conformer_family_coord_set pdb           . 16651 1 
+2 distance-restraints  other_constraints          ?             . 16651 1 
+3 2thiocytidine.png    Image                      ?             . 16651 1 
+4 tRNA-ARG-ACG-s2c.str deposited_data_files       'NMR-STAR V3' . 16651 1 
+5 dihedral-restraints  other_constraints          ?             . 16651 1 
+6 hbonds-restraints    other_constraints          ?             . 16651 1 
+# 
+_Entry.Sf_category                        entry_information 
+_Entry.Sf_framecode                       entry_information 
+_Entry.ID                                 16651 
+_Entry.Title                              
+;Solution structure of the E coli tRNA-Arg1 (ACG) containing the 2-thiocytidine modification in position 32
+;
+_Entry.Version_type                       original 
+_Entry.Submission_date                    2009-12-22 
+_Entry.Accession_date                     2009-12-22 
+_Entry.Last_release_date                  . 
+_Entry.Original_release_date              . 
+_Entry.Origination                        author 
+_Entry.NMR_STAR_version                   3.0.9.13 
+_Entry.Original_NMR_STAR_version          3.0.9.13 
+_Entry.Experimental_method                NMR 
+_Entry.Experimental_method_subtype        SOLUTION 
+_Entry.Dep_release_code_coordinates       'HOLD FOR PUBLICATION' 
+_Entry.Dep_release_code_nmr_constraints   'HOLD FOR PUBLICATION' 
+_Entry.Dep_release_code_chemical_shifts   . 
+_Entry.Dep_release_code_nmr_exptl         'HOLD FOR PUBLICATION' 
+_Entry.Dep_release_code_sequence          'RELEASE NOW' 
+_Entry.CASP_target                        . 
+_Entry.Details                            . 
+_Entry.Special_processing_instructions    . 
+_Entry.Update_BMRB_accession_code         . 
+_Entry.Replace_BMRB_accession_code        . 
+_Entry.Update_PDB_accession_code          . 
+_Entry.Replace_PDB_accession_code         . 
+_Entry.PDB_coordinate_file_version        . 
+_Entry.BMRB_update_details                . 
+_Entry.PDB_update_details                 . 
+_Entry.Release_request                    . 
+_Entry.Release_date_request               . 
+_Entry.Release_date_justification         . 
+_Entry.Status_code                        . 
+_Entry.Recvd_deposit_form                 . 
+_Entry.Date_deposition_form               . 
+_Entry.Recvd_coordinates                  . 
+_Entry.Date_coordinates                   . 
+_Entry.Recvd_nmr_constraints              . 
+_Entry.Date_nmr_constraints               . 
+_Entry.Recvd_chemical_shifts              . 
+_Entry.Date_chemical_shifts               . 
+_Entry.Recvd_manuscript                   . 
+_Entry.Date_manuscript                    . 
+_Entry.Recvd_author_approval              . 
+_Entry.Date_author_approval               . 
+_Entry.Recvd_initial_deposition_date      . 
+_Entry.PDB_date_submitted                 . 
+_Entry.Author_release_status_code         . 
+_Entry.Date_of_PDB_release                . 
+_Entry.Date_hold_coordinates              . 
+_Entry.Date_hold_nmr_constraints          . 
+_Entry.Date_hold_chemical_shifts          . 
+_Entry.PDB_deposit_site                   BMRB 
+_Entry.PDB_process_site                   RCSB 
+_Entry.BMRB_deposit_site                  BMRB 
+_Entry.BMRB_process_site                  BMRB 
+_Entry.BMRB_annotator                     . 
+_Entry.BMRB_internal_directory_name       . 
+_Entry.RCSB_annotator                     UNASSIGNED 
+_Entry.Author_approval_type               . 
+_Entry.Assigned_BMRB_ID                   16651 
+_Entry.Assigned_BMRB_deposition_code      2Z0R6V2 
+_Entry.Assigned_PDB_ID                    2KRW 
+_Entry.Assigned_PDB_deposition_code       RCSB101497 
+_Entry.Assigned_restart_ID                . 
+# 
+loop_
+_Contact_person.ID 
+_Contact_person.Email_address 
+_Contact_person.Name_salutation 
+_Contact_person.Given_name 
+_Contact_person.Family_name 
+_Contact_person.Middle_initials 
+_Contact_person.Family_title 
+_Contact_person.Department_and_institution 
+_Contact_person.Mailing_address 
+_Contact_person.Address_1 
+_Contact_person.Address_2 
+_Contact_person.Address_3 
+_Contact_person.City 
+_Contact_person.State_province 
+_Contact_person.Country 
+_Contact_person.Postal_code 
+_Contact_person.Phone_number 
+_Contact_person.FAX_number 
+_Contact_person.Role 
+_Contact_person.Organization_type 
+_Contact_person.Entry_ID 
+1 paul_agris@ncsu.edu    Prof. Paul Agris    ? ? ? ? '128 Polk Hall' 
+'Dept. of Molecular and Structural Biochemistry Campus Box 7622' 
+'North Carolina State University' Raleigh NC USA 27695-7622 919-515-6188 
+919-515-2047 'principal investigator' academic 16651 
+2 yann_bilbille@ncsu.edu Dr.   Yann Bilbille ? ? ? ? '128 Polk Hall' 
+'Dept. of Molecular and Structural Biochemistry Campus Box 7622' 
+'North Carolina State University' Raleigh NC USA 27695-7622 919-515-5732 ? 
+investigator             academic 16651 
+# 
+loop_
+_Entry_author.Ordinal 
+_Entry_author.Given_name 
+_Entry_author.Family_name 
+_Entry_author.First_initial 
+_Entry_author.Middle_initials 
+_Entry_author.Family_title 
+_Entry_author.Entry_ID 
+1 Yann Bilbille ? ?  ? 16651 
+2 Paul Agris    ? F. ? 16651 
+# 
+_SG_project.SG_project_ID         1 
+_SG_project.Project_name          'not applicable' 
+_SG_project.Full_name_of_center   'not applicable' 
+_SG_project.Initial_of_center     ? 
+_SG_project.Entry_ID              16651 
+# 
+loop_
+_Struct_keywords.Keywords 
+_Struct_keywords.Text 
+_Struct_keywords.Entry_ID 
+RNA            ? 16651 
+tRNA           ? 16651 
+2-thiocytidine ? 16651 
+ASL            ? 16651 
+modification   ? 16651 
+# 
+_Data_set.Type       assigned_chemical_shifts 
+_Data_set.Count      1 
+_Data_set.Entry_ID   16651 
+# 
+_Datum.Type       '1H chemical shifts' 
+_Datum.Count      132 
+_Datum.Entry_ID   16651 
+# 
+_Release.Release_number    ? 
+_Release.Date              ? 
+_Release.Submission_date   ? 
+_Release.Type              ? 
+_Release.Author            ? 
+_Release.Detail            ? 
+_Release.Entry_ID          16651 
+# 
+loop_
+_Related_entries.Database_name 
+_Related_entries.Database_accession_code 
+_Related_entries.Relationship 
+_Related_entries.Entry_ID 
+BMRB 16644 
+;RNA (5'-R(*CP*UP*CP*GP*GP*CP*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')
+;
+16651 
+BMRB 16645 
+;RNA 5'-R(*CP*UP*CP*GP*GP*CP*UP*IP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3'
+;
+16651 
+BMRB 16650 
+;RNA (5'-R(*CP*UP*CP*GP*GP*(N)P*UP*IP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')
+;
+16651 
+# 
+_Citation.Sf_category                  citations 
+_Citation.Sf_framecode                 'tRNA-Arg1-(ACG)-s2C32' 
+_Citation.Entry_ID                     16651 
+_Citation.ID                           1 
+_Citation.Class                        'entry citation' 
+_Citation.CAS_abstract_code            . 
+_Citation.MEDLINE_UI_code              . 
+_Citation.DOI                          ? 
+_Citation.PubMed_ID                    ? 
+_Citation.Full_citation                . 
+_Citation.Title                        
+;Solution structure of the tRNA-Arg1 (ACG) containing the 2-thiocytidine modification in position 32
+;
+_Citation.Status                       'in preparation' 
+_Citation.Type                         journal 
+_Citation.Journal_abbrev               'Not known' 
+_Citation.Journal_name_full            ? 
+_Citation.Journal_volume               ? 
+_Citation.Journal_issue                ? 
+_Citation.Journal_ASTM                 ? 
+_Citation.Journal_ISSN                 ? 
+_Citation.Journal_CSD                  ? 
+_Citation.Book_title                   . 
+_Citation.Book_chapter_title           . 
+_Citation.Book_volume                  . 
+_Citation.Book_series                  . 
+_Citation.Book_publisher               . 
+_Citation.Book_publisher_city          . 
+_Citation.Book_ISBN                    . 
+_Citation.Conference_title             . 
+_Citation.Conference_site              . 
+_Citation.Conference_state_province    . 
+_Citation.Conference_country           . 
+_Citation.Conference_start_date        . 
+_Citation.Conference_end_date          . 
+_Citation.Conference_abstract_number   . 
+_Citation.Thesis_institution           . 
+_Citation.Thesis_institution_city      . 
+_Citation.Thesis_institution_country   . 
+_Citation.WWW_URL                      . 
+_Citation.Page_first                   ? 
+_Citation.Page_last                    ? 
+_Citation.Year                         ? 
+_Citation.Details                      . 
+# 
+loop_
+_Citation_author.Ordinal 
+_Citation_author.Given_name 
+_Citation_author.Family_name 
+_Citation_author.First_initial 
+_Citation_author.Middle_initials 
+_Citation_author.Family_title 
+_Citation_author.Entry_ID 
+_Citation_author.Citation_ID 
+1 Yann    Bilbille ? ?  ? 16651 1 
+2 William Cantara  ? A. ? 16651 1 
+3 Jia     Kim      ? ?  ? 16651 1 
+4 Paul    Agris    ? F. ? 16651 1 
+# 
+_Assembly.Sf_category                       assembly 
+_Assembly.Sf_framecode                      assembly 
+_Assembly.Entry_ID                          16651 
+_Assembly.ID                                1 
+_Assembly.Name                              
+"5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3'" 
+_Assembly.BMRB_code                         . 
+_Assembly.Number_of_components              1 
+_Assembly.Organic_ligands                   . 
+_Assembly.Metal_ions                        . 
+_Assembly.Non_standard_bonds                . 
+_Assembly.Ambiguous_conformational_states   . 
+_Assembly.Ambiguous_chem_comp_sites         . 
+_Assembly.Molecules_in_chemical_exchange    . 
+_Assembly.Paramagnetic                      no 
+_Assembly.Thiol_state                       . 
+_Assembly.Molecular_mass                    . 
+_Assembly.Enzyme_commission_number          . 
+_Assembly.Details                           . 
+_Assembly.DB_query_date                     . 
+_Assembly.DB_query_revised_last_date        . 
+# 
+_Entity_assembly.ID                                1 
+_Entity_assembly.Entity_assembly_name              
+;RNA (5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')
+;
+_Entity_assembly.Entity_ID                         1 
+_Entity_assembly.Entity_label                      
+"RNA_(5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')" 
+_Entity_assembly.Asym_ID                           A 
+_Entity_assembly.PDB_chain_ID                      ? 
+_Entity_assembly.Experimental_data_reported        yes 
+_Entity_assembly.Physical_state                    native 
+_Entity_assembly.Conformational_isomer             no 
+_Entity_assembly.Chemical_exchange_state           no 
+_Entity_assembly.Magnetic_equivalence_group_code   ? 
+_Entity_assembly.Role                              ? 
+_Entity_assembly.Details                           ? 
+_Entity_assembly.Entry_ID                          16651 
+_Entity_assembly.Assembly_ID                       1 
+# 
+_Entity.Sf_category                       entity 
+_Entity.Sf_framecode                      
+"RNA_(5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')" 
+_Entity.Entry_ID                          16651 
+_Entity.ID                                1 
+_Entity.BMRB_code                         . 
+_Entity.Name                              
+"RNA_(5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')" 
+_Entity.Type                              polymer 
+_Entity.Polymer_common_type               . 
+_Entity.Polymer_type                      polyribonucleotide 
+_Entity.Polymer_type_details              . 
+_Entity.Polymer_strand_ID                 A 
+_Entity.Polymer_seq_one_letter_code_can   ? 
+_Entity.Polymer_seq_one_letter_code       CUCGGXUACGAACCGAG 
+_Entity.Target_identifier                 . 
+_Entity.Polymer_author_defined_seq        . 
+_Entity.Polymer_author_seq_details        . 
+_Entity.Ambiguous_conformational_states   no 
+_Entity.Ambiguous_chem_comp_sites         no 
+_Entity.Nstd_monomer                      yes 
+_Entity.Nstd_chirality                    no 
+_Entity.Nstd_linkage                      no 
+_Entity.Nonpolymer_comp_ID                ? 
+_Entity.Nonpolymer_comp_label             ? 
+_Entity.Number_of_monomers                17 
+_Entity.Number_of_nonpolymer_components   . 
+_Entity.Paramagnetic                      no 
+_Entity.Thiol_state                       'all free' 
+_Entity.Src_method                        syn 
+_Entity.Parent_entity_ID                  1 
+_Entity.Fragment                          . 
+_Entity.Mutation                          . 
+_Entity.EC_number                         . 
+_Entity.Calc_isoelectric_point            . 
+_Entity.Formula_weight                    5332.266 
+_Entity.Formula_weight_exptl              . 
+_Entity.Formula_weight_exptl_meth         . 
+_Entity.Details                           . 
+_Entity.DB_query_date                     . 
+_Entity.DB_query_revised_last_date        . 
+# 
+loop_
+_Entity_comp_index.ID 
+_Entity_comp_index.Auth_seq_ID 
+_Entity_comp_index.Comp_ID 
+_Entity_comp_index.Comp_label 
+_Entity_comp_index.Entry_ID 
+_Entity_comp_index.Entity_ID 
+1  27 C . 16651 1 
+2  28 U . 16651 1 
+3  29 C . 16651 1 
+4  30 G . 16651 1 
+5  31 G . 16651 1 
+6  32 N . 16651 1 
+7  33 U . 16651 1 
+8  34 A . 16651 1 
+9  35 C . 16651 1 
+10 36 G . 16651 1 
+11 37 A . 16651 1 
+12 38 A . 16651 1 
+13 39 C . 16651 1 
+14 40 C . 16651 1 
+15 41 G . 16651 1 
+16 42 A . 16651 1 
+17 43 G . 16651 1 
+# 
+loop_
+_Entity_poly_seq.Hetero 
+_Entity_poly_seq.Mon_ID 
+_Entity_poly_seq.Num 
+_Entity_poly_seq.Comp_index_ID 
+_Entity_poly_seq.Entry_ID 
+_Entity_poly_seq.Entity_ID 
+. C 1  1  16651 1 
+. U 2  2  16651 1 
+. C 3  3  16651 1 
+. G 4  4  16651 1 
+. G 5  5  16651 1 
+. N 6  6  16651 1 
+. U 7  7  16651 1 
+. A 8  8  16651 1 
+. C 9  9  16651 1 
+. G 10 10 16651 1 
+. A 11 11 16651 1 
+. A 12 12 16651 1 
+. C 13 13 16651 1 
+. C 14 14 16651 1 
+. G 15 15 16651 1 
+. A 16 16 16651 1 
+. G 17 17 16651 1 
+# 
+_Entity_natural_src_list.Sf_category    natural_source 
+_Entity_natural_src_list.Sf_framecode   natural_source 
+_Entity_natural_src_list.Entry_ID       16651 
+_Entity_natural_src_list.ID             1 
+# 
+_Entity_natural_src.ID                           1 
+_Entity_natural_src.Entity_ID                    1 
+_Entity_natural_src.Entity_label                 
+"RNA_(5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')" 
+_Entity_natural_src.Entity_chimera_segment_ID    ? 
+_Entity_natural_src.NCBI_taxonomy_ID             562 
+_Entity_natural_src.Type                         organism 
+_Entity_natural_src.Common                       ? 
+_Entity_natural_src.Organism_name_scientific     'Escherichia coli' 
+_Entity_natural_src.Organism_name_common         'E. coli' 
+_Entity_natural_src.Organism_acronym             ? 
+_Entity_natural_src.ICTVdb_decimal_code          ? 
+_Entity_natural_src.Superkingdom                 Eubacteria 
+_Entity_natural_src.Kingdom                      ? 
+_Entity_natural_src.Genus                        Escherichia 
+_Entity_natural_src.Species                      coli 
+_Entity_natural_src.Strain                       ? 
+_Entity_natural_src.Variant                      . 
+_Entity_natural_src.Subvariant                   . 
+_Entity_natural_src.Organ                        . 
+_Entity_natural_src.Tissue                       . 
+_Entity_natural_src.Tissue_fraction              . 
+_Entity_natural_src.Cell_line                    . 
+_Entity_natural_src.Cell_type                    . 
+_Entity_natural_src.ATCC_number                  . 
+_Entity_natural_src.Organelle                    . 
+_Entity_natural_src.Cellular_location            . 
+_Entity_natural_src.Fragment                     . 
+_Entity_natural_src.Fraction                     . 
+_Entity_natural_src.Secretion                    . 
+_Entity_natural_src.Plasmid                      . 
+_Entity_natural_src.Plasmid_details              . 
+_Entity_natural_src.Gene_mnemonic                . 
+_Entity_natural_src.Dev_stage                    . 
+_Entity_natural_src.Details                      . 
+_Entity_natural_src.Citation_ID                  . 
+_Entity_natural_src.Citation_label               . 
+_Entity_natural_src.Entry_ID                     16651 
+_Entity_natural_src.Entity_natural_src_list_ID   1 
+# 
+_Entity_experimental_src_list.Sf_category    experimental_source 
+_Entity_experimental_src_list.Sf_framecode   experimental_source 
+_Entity_experimental_src_list.Entry_ID       16651 
+_Entity_experimental_src_list.ID             1 
+# 
+_Entity_experimental_src.ID                                1 
+_Entity_experimental_src.Entity_ID                         1 
+_Entity_experimental_src.Entity_label                      
+"RNA_(5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')" 
+_Entity_experimental_src.Entity_chimera_segment_ID         ? 
+_Entity_experimental_src.Production_method                 'chemical synthesis' 
+_Entity_experimental_src.Host_org_scientific_name          . 
+_Entity_experimental_src.Host_org_name_common              ? 
+_Entity_experimental_src.Host_org_details                  ? 
+_Entity_experimental_src.Host_org_NCBI_taxonomy_ID         ? 
+_Entity_experimental_src.Host_org_genus                    ? 
+_Entity_experimental_src.Host_org_species                  ? 
+_Entity_experimental_src.Host_org_strain                   ? 
+_Entity_experimental_src.Host_org_variant                  ? 
+_Entity_experimental_src.Host_org_subvariant               . 
+_Entity_experimental_src.Host_org_organ                    . 
+_Entity_experimental_src.Host_org_tissue                   . 
+_Entity_experimental_src.Host_org_tissue_fraction          . 
+_Entity_experimental_src.Host_org_cell_line                . 
+_Entity_experimental_src.Host_org_cell_type                . 
+_Entity_experimental_src.Host_org_cellular_location        . 
+_Entity_experimental_src.Host_org_organelle                . 
+_Entity_experimental_src.Host_org_gene                     . 
+_Entity_experimental_src.Host_org_culture_collection       . 
+_Entity_experimental_src.Host_org_ATCC_number              . 
+_Entity_experimental_src.Vector_type                       . 
+_Entity_experimental_src.PDBview_host_org_vector_name      . 
+_Entity_experimental_src.PDBview_plasmid_name              . 
+_Entity_experimental_src.Vector_name                       . 
+_Entity_experimental_src.Vector_details                    . 
+_Entity_experimental_src.Vendor_name                       . 
+_Entity_experimental_src.Host_org_dev_stage                . 
+_Entity_experimental_src.Details                           . 
+_Entity_experimental_src.Citation_ID                       . 
+_Entity_experimental_src.Citation_label                    . 
+_Entity_experimental_src.Entry_ID                          16651 
+_Entity_experimental_src.Entity_experimental_src_list_ID   1 
+# 
+_Chem_comp.Sf_category                       chem_comp 
+_Chem_comp.Sf_framecode                      chem_comp_N 
+_Chem_comp.Entry_ID                          16651 
+_Chem_comp.ID                                N 
+_Chem_comp.Provenance                        ? 
+_Chem_comp.Name                              
+;ANY 5'-MONOPHOSPHATE NUCLEOTIDE
+;
+_Chem_comp.Type                              'RNA LINKING' 
+_Chem_comp.BMRB_code                         ? 
+_Chem_comp.PDB_code                          N 
+_Chem_comp.Ambiguous_flag                    no 
+_Chem_comp.Initial_date                      1999-07-13 
+_Chem_comp.Modified_date                     2011-06-04 
+_Chem_comp.Release_status                    REL 
+_Chem_comp.Replaced_by                       ? 
+_Chem_comp.Replaces                          ROB 
+_Chem_comp.One_letter_code                   N 
+_Chem_comp.Three_letter_code                 N 
+_Chem_comp.Number_atoms_all                  ? 
+_Chem_comp.Number_atoms_nh                   ? 
+_Chem_comp.PubChem_code                      ? 
+_Chem_comp.Subcomponent_list                 ? 
+_Chem_comp.InCHi_code                        ? 
+_Chem_comp.Mon_nstd_flag                     ? 
+_Chem_comp.Mon_nstd_class                    ? 
+_Chem_comp.Mon_nstd_details                  ? 
+_Chem_comp.Mon_nstd_parent                   ? 
+_Chem_comp.Mon_nstd_parent_comp_ID           ? 
+_Chem_comp.Std_deriv_one_letter_code         ? 
+_Chem_comp.Std_deriv_three_letter_code       ? 
+_Chem_comp.Std_deriv_BMRB_code               ? 
+_Chem_comp.Std_deriv_PDB_code                ? 
+_Chem_comp.Std_deriv_chem_comp_name          ? 
+_Chem_comp.Synonyms                          
+"1-DEOXY-RIBOFURANOSE-5'-PHOSPHATE" 
+_Chem_comp.Formal_charge                     0 
+_Chem_comp.Paramagnetic                      ? 
+_Chem_comp.Aromatic                          no 
+_Chem_comp.Formula                           'C5 H11 O7 P' 
+_Chem_comp.Formula_weight                    214.110 
+_Chem_comp.Formula_mono_iso_wt_nat           ? 
+_Chem_comp.Formula_mono_iso_wt_13C           ? 
+_Chem_comp.Formula_mono_iso_wt_15N           ? 
+_Chem_comp.Formula_mono_iso_wt_13C_15N       ? 
+_Chem_comp.Image_file_name                   ? 
+_Chem_comp.Image_file_format                 ? 
+_Chem_comp.Topo_file_name                    ? 
+_Chem_comp.Topo_file_format                  ? 
+_Chem_comp.Struct_file_name                  ? 
+_Chem_comp.Struct_file_format                ? 
+_Chem_comp.Stereochem_param_file_name        ? 
+_Chem_comp.Stereochem_param_file_format      ? 
+_Chem_comp.Model_details                     ? 
+_Chem_comp.Model_erf                         ? 
+_Chem_comp.Model_source                      ? 
+_Chem_comp.Model_coordinates_details         ? 
+_Chem_comp.Model_coordinates_missing_flag    no 
+_Chem_comp.Ideal_coordinates_details         ? 
+_Chem_comp.Ideal_coordinates_missing_flag    no 
+_Chem_comp.Model_coordinates_db_code         1G9T 
+_Chem_comp.Processing_site                   RCSB 
+_Chem_comp.Vendor                            ? 
+_Chem_comp.Vendor_product_code               ? 
+_Chem_comp.Details                           
+;Information obtained from PDB's Chemical Component Dictionary
+at http://wwpdb-remediation.rutgers.edu/downloads.html
+Downloaded on Fri Nov 18 13:47:08 2011
+;
+_Chem_comp.DB_query_date                     ? 
+_Chem_comp.DB_last_query_revised_last_date   ? 
+# 
+loop_
+_Chem_comp_descriptor.Descriptor 
+_Chem_comp_descriptor.Type 
+_Chem_comp_descriptor.Program 
+_Chem_comp_descriptor.Program_version 
+_Chem_comp_descriptor.Entry_ID 
+_Chem_comp_descriptor.Comp_ID 
+'O=P(OCC1OCC(O)C1O)(O)O' SMILES           ACDLabs              10.04 16651 N 
+'O[C@H]1CO[C@H](CO[P](O)(O)=O)[C@H]1O' SMILES_CANONICAL CACTVS               
+3.341 16651 N 
+'O[CH]1CO[CH](CO[P](O)(O)=O)[CH]1O' SMILES           CACTVS               
+3.341 16651 N 
+'C1[C@@H]([C@@H]([C@H](O1)COP(=O)(O)O)O)O' SMILES_CANONICAL 
+'OpenEye OEToolkits' 1.5.0 16651 N 
+'C1C(C(C(O1)COP(=O)(O)O)O)O' SMILES           'OpenEye OEToolkits' 1.5.0 16651 
+N 
+;InChI=1S/C5H11O7P/c6-3-1-11-4(5(3)7)2-12-13(8,9)10/h3-7H,1-2H2,(H2,8,9,10)/t3-,4+,5-/m0/s1
+;
+InChI            InChI                1.03  16651 N 
+CYZZKTRFOOKUMT-LMVFSUKVSA-N InChIKey         InChI                1.03  16651 
+N 
+# 
+loop_
+_Chem_comp_identifier.Identifier 
+_Chem_comp_identifier.Type 
+_Chem_comp_identifier.Program 
+_Chem_comp_identifier.Program_version 
+_Chem_comp_identifier.Entry_ID 
+_Chem_comp_identifier.Comp_ID 
+1,4-anhydro-5-O-phosphono-D-ribitol                                
+'SYSTEMATIC NAME' ACDLabs              10.04 16651 N 
+'[(2R,3S,4S)-3,4-dihydroxyoxolan-2-yl]methyl dihydrogen phosphate' 
+'SYSTEMATIC NAME' 'OpenEye OEToolkits' 1.5.0 16651 N 
+# 
+loop_
+_Chem_comp_atom.Atom_ID 
+_Chem_comp_atom.BMRB_code 
+_Chem_comp_atom.PDB_atom_ID 
+_Chem_comp_atom.Alt_atom_ID 
+_Chem_comp_atom.Auth_atom_ID 
+_Chem_comp_atom.Type_symbol 
+_Chem_comp_atom.Isotope_number 
+_Chem_comp_atom.Chirality 
+_Chem_comp_atom.Stereo_config 
+_Chem_comp_atom.Charge 
+_Chem_comp_atom.Partial_charge 
+_Chem_comp_atom.Oxidation_number 
+_Chem_comp_atom.Unpaired_electron_number 
+_Chem_comp_atom.Align 
+_Chem_comp_atom.Aromatic_flag 
+_Chem_comp_atom.Leaving_atom_flag 
+_Chem_comp_atom.Substruct_code 
+_Chem_comp_atom.Ionizable 
+_Chem_comp_atom.Drawing_2D_coord_x 
+_Chem_comp_atom.Drawing_2D_coord_y 
+_Chem_comp_atom.Model_Cartn_x 
+_Chem_comp_atom.Model_Cartn_x_esd 
+_Chem_comp_atom.Model_Cartn_y 
+_Chem_comp_atom.Model_Cartn_y_esd 
+_Chem_comp_atom.Model_Cartn_z 
+_Chem_comp_atom.Model_Cartn_z_esd 
+_Chem_comp_atom.Model_Cartn_x_ideal 
+_Chem_comp_atom.Model_Cartn_y_ideal 
+_Chem_comp_atom.Model_Cartn_z_ideal 
+_Chem_comp_atom.PDBX_ordinal 
+_Chem_comp_atom.Details 
+_Chem_comp_atom.Entry_ID 
+_Chem_comp_atom.Comp_ID 
+OP3    ? OP3    ? ? O ? ? N 0 ? ? ? ? no yes ? ? ? ? 10.761 ? 86.955 ? 65.197 
+? -3.891 1.004  0.092  1  ? 16651 N 
+P      ? P      ? ? P ? ? N 0 ? ? ? ? no no  ? ? ? ? 10.142 ? 87.086 ? 66.531 
+? -2.663 -0.031 -0.027 2  ? 16651 N 
+OP1    ? OP1    ? ? O ? ? N 0 ? ? ? ? no no  ? ? ? ? 10.847 ? 88.090 ? 67.347 
+? -2.874 -1.157 0.910  3  ? 16651 N 
+OP2    ? OP2    ? ? O ? ? N 0 ? ? ? ? no no  ? ? ? ? 8.692  ? 87.283 ? 66.512 
+? -2.581 -0.594 -1.533 4  ? 16651 N 
+"O5'"  ? "O5'"  ? ? O ? ? N 0 ? ? ? ? no no  ? ? ? ? 10.538 ? 85.720 ? 67.176 
+? -1.289 0.723  0.340  5  ? 16651 N 
+"C5'"  ? "C5'"  ? ? C ? ? N 0 ? ? ? ? no no  ? ? ? ? 9.666  ? 84.781 ? 67.791 
+? -0.259 -0.268 0.332  6  ? 16651 N 
+"C4'"  ? "C4'"  ? ? C ? ? R 0 ? ? ? ? no no  ? ? ? ? 10.002 ? 83.443 ? 67.242 
+? 1.081  0.386  0.675  7  ? 16651 N 
+"O4'"  ? "O4'"  ? ? O ? ? N 0 ? ? ? ? no no  ? ? ? ? 11.364 ? 83.072 ? 67.508 
+? 1.482  1.301  -0.367 8  ? 16651 N 
+"C3'"  ? "C3'"  ? ? C ? ? S 0 ? ? ? ? no no  ? ? ? ? 9.128  ? 82.397 ? 67.841 
+? 2.216  -0.670 0.686  9  ? 16651 N 
+"O3'"  ? "O3'"  ? ? O ? ? N 0 ? ? ? ? no no  ? ? ? ? 8.611  ? 81.562 ? 66.790 
+? 2.023  -1.637 -0.348 10 ? 16651 N 
+"C2'"  ? "C2'"  ? ? C ? ? S 0 ? ? ? ? no no  ? ? ? ? 10.023 ? 81.630 ? 68.762 
+? 3.468  0.197  0.406  11 ? 16651 N 
+"O2'"  ? "O2'"  ? ? O ? ? N 0 ? ? ? ? no no  ? ? ? ? 9.798  ? 80.229 ? 68.647 
+? 4.353  -0.477 -0.491 12 ? 16651 N 
+"C1'"  ? "C1'"  ? ? C ? ? N 0 ? ? ? ? no no  ? ? ? ? 11.479 ? 81.977 ? 68.419 
+? 2.904  1.473  -0.250 13 ? 16651 N 
+HOP3   ? HOP3   ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 10.082 ? 86.927 ? 64.534 
+? -4.693 0.514  -0.135 14 ? 16651 N 
+HOP2   ? HOP2   ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 8.366  ? 87.326 ? 67.403 
+? -2.443 0.170  -2.110 15 ? 16651 N 
+"H5'"  ? "H5'"  ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 9.806  ? 84.790 ? 68.882 
+? -0.199 -0.721 -0.658 16 ? 16651 N 
+"H5''" ? "H5''" ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 8.615  ? 85.033 ? 67.585 
+? -0.488 -1.036 1.070  17 ? 16651 N 
+"H4'"  ? "H4'"  ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 9.849  ? 83.511 ? 66.155 
+? 1.021  0.899  1.635  18 ? 16651 N 
+"H3'"  ? "H3'"  ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 8.263  ? 82.806 ? 68.383 
+? 2.288  -1.153 1.660  19 ? 16651 N 
+"HO3'" ? "HO3'" ? ? H ? ? N 0 ? ? ? ? no yes ? ? ? ? 8.497  ? 82.079 ? 66.001 
+? 2.759  -2.261 -0.287 20 ? 16651 N 
+"H2'"  ? "H2'"  ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 9.806  ? 81.908 ? 69.804 
+? 3.981  0.441  1.336  21 ? 16651 N 
+"HO2'" ? "HO2'" ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 9.748  ? 79.990 ? 67.729 
+? 5.081  0.131  -0.676 22 ? 16651 N 
+"H1'"  ? "H1'"  ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 11.997 ? 81.123 ? 67.957 
+? 3.344  1.606  -1.238 23 ? 16651 N 
+"H1'2" ? "H1'2" ? ? H ? ? N 0 ? ? ? ? no no  ? ? ? ? 12.074 ? 82.229 ? 69.309 
+? 3.123  2.338  0.375  24 ? 16651 N 
+# 
+loop_
+_Chem_comp_bond.ID 
+_Chem_comp_bond.Type 
+_Chem_comp_bond.Value_order 
+_Chem_comp_bond.Atom_ID_1 
+_Chem_comp_bond.Atom_ID_2 
+_Chem_comp_bond.Aromatic_flag 
+_Chem_comp_bond.Stereo_config 
+_Chem_comp_bond.Ordinal 
+_Chem_comp_bond.Details 
+_Chem_comp_bond.Entry_ID 
+_Chem_comp_bond.Comp_ID 
+1  ? SING OP3   P      no N 1  ? 16651 N 
+2  ? SING OP3   HOP3   no N 2  ? 16651 N 
+3  ? DOUB P     OP1    no N 3  ? 16651 N 
+4  ? SING P     OP2    no N 4  ? 16651 N 
+5  ? SING P     "O5'"  no N 5  ? 16651 N 
+6  ? SING OP2   HOP2   no N 6  ? 16651 N 
+7  ? SING "O5'" "C5'"  no N 7  ? 16651 N 
+8  ? SING "C5'" "C4'"  no N 8  ? 16651 N 
+9  ? SING "C5'" "H5'"  no N 9  ? 16651 N 
+10 ? SING "C5'" "H5''" no N 10 ? 16651 N 
+11 ? SING "C4'" "O4'"  no N 11 ? 16651 N 
+12 ? SING "C4'" "C3'"  no N 12 ? 16651 N 
+13 ? SING "C4'" "H4'"  no N 13 ? 16651 N 
+14 ? SING "O4'" "C1'"  no N 14 ? 16651 N 
+15 ? SING "C3'" "O3'"  no N 15 ? 16651 N 
+16 ? SING "C3'" "C2'"  no N 16 ? 16651 N 
+17 ? SING "C3'" "H3'"  no N 17 ? 16651 N 
+18 ? SING "O3'" "HO3'" no N 18 ? 16651 N 
+19 ? SING "C2'" "O2'"  no N 19 ? 16651 N 
+20 ? SING "C2'" "C1'"  no N 20 ? 16651 N 
+21 ? SING "C2'" "H2'"  no N 21 ? 16651 N 
+22 ? SING "O2'" "HO2'" no N 22 ? 16651 N 
+23 ? SING "C1'" "H1'"  no N 23 ? 16651 N 
+24 ? SING "C1'" "H1'2" no N 24 ? 16651 N 
+# 
+loop_
+_Sample.Sf_category 
+_Sample.Sf_framecode 
+_Sample.Entry_ID 
+_Sample.ID 
+_Sample.Type 
+_Sample.Sub_type 
+_Sample.Details 
+_Sample.Aggregate_sample_number 
+_Sample.Solvent_system 
+_Sample.Preparation_date 
+_Sample.Preparation_expiration_date 
+_Sample.Polycrystallization_protocol 
+_Sample.Single_crystal_protocol 
+_Sample.Crystal_grow_apparatus 
+_Sample.Crystal_grow_atmosphere 
+_Sample.Crystal_grow_details 
+_Sample.Crystal_grow_method 
+_Sample.Crystal_grow_method_cit_ID 
+_Sample.Crystal_grow_pH 
+_Sample.Crystal_grow_pH_range 
+_Sample.Crystal_grow_pressure 
+_Sample.Crystal_grow_pressure_esd 
+_Sample.Crystal_grow_seeding 
+_Sample.Crystal_grow_seeding_cit_ID 
+_Sample.Crystal_grow_temp 
+_Sample.Crystal_grow_temp_details 
+_Sample.Crystal_grow_temp_esd 
+_Sample.Crystal_grow_time 
+_Sample.Oriented_sample_prep_protocol 
+_Sample.Lyophilization_cryo_protectant 
+_Sample.Storage_protocol 
+sample sample_1 16651 1 solution . . . '90% H2O/10% D2O' . . . . . . . . . . . 
+. . . . . . . . . . . 
+sample Sample_2 16651 2 solution . . . '100% D2O'        . . . . . . . . . . . 
+. . . . . . . . . . . 
+# 
+loop_
+_Sample_component.ID 
+_Sample_component.Mol_common_name 
+_Sample_component.Isotopic_labeling 
+_Sample_component.Assembly_ID 
+_Sample_component.Assembly_label 
+_Sample_component.Entity_ID 
+_Sample_component.Entity_label 
+_Sample_component.Product_ID 
+_Sample_component.Type 
+_Sample_component.Concentration_val 
+_Sample_component.Concentration_val_min 
+_Sample_component.Concentration_val_max 
+_Sample_component.Concentration_val_units 
+_Sample_component.Concentration_val_err 
+_Sample_component.Vendor 
+_Sample_component.Vendor_product_name 
+_Sample_component.Vendor_product_code 
+_Sample_component.Entry_ID 
+_Sample_component.Sample_ID 
+1 
+;RNA (5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')
+;
+'natural abundance' ? ? 1 
+"RNA_(5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')" ? ? 0.7 
+? ? mM ? ? ? ? 16651 1 
+2 'phosphate buffer'                                                    
+'natural abundance' ? ? ? ? ? ? 20  ? ? mM ? ? ? ? 16651 1 
+1 
+;RNA (5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')
+;
+'natural abundance' ? ? 1 
+"RNA_(5'-R(*CP*UP*CP*GP*GP*(N)P*UP*AP*CP*GP*AP*AP*CP*CP*GP*AP*G)-3')" ? ? 0.7 
+? ? mM ? ? ? ? 16651 2 
+2 'phosphate buffer'                                                    
+'natural abundance' ? ? ? ? ? ? 20  ? ? mM ? ? ? ? 16651 2 
+# 
+_Sample_condition_list.Sf_category    sample_conditions 
+_Sample_condition_list.Sf_framecode   sample_conditions_1 
+_Sample_condition_list.Entry_ID       16651 
+_Sample_condition_list.ID             1 
+_Sample_condition_list.Details        . 
+# 
+loop_
+_Sample_condition_variable.Type 
+_Sample_condition_variable.Val 
+_Sample_condition_variable.Val_err 
+_Sample_condition_variable.Val_units 
+_Sample_condition_variable.Entry_ID 
+_Sample_condition_variable.Sample_condition_list_ID 
+temperature      298 ? K   16651 1 
+pH               6.8 ? pH  16651 1 
+pressure         1   ? atm 16651 1 
+'ionic strength' 20  ? mM  16651 1 
+# 
+loop_
+_Software.Sf_category 
+_Software.Sf_framecode 
+_Software.Entry_ID 
+_Software.ID 
+_Software.Name 
+_Software.Version 
+_Software.Details 
+software xwinnmr 16651 1 xwinnmr .    . 
+software TOPSPIN 16651 2 TOPSPIN .    . 
+software VNMRJ   16651 3 VNMRJ   .    . 
+software NMRPipe 16651 4 NMRPipe .    . 
+software NMRDraw 16651 5 NMRDraw .    . 
+software CNS     16651 6 CNS     1.21 . 
+software SPARKY  16651 7 SPARKY  .    . 
+software Molmol  16651 8 Molmol  .    . 
+# 
+loop_
+_Vendor.Name 
+_Vendor.Address 
+_Vendor.Electronic_address 
+_Vendor.Entry_ID 
+_Vendor.Software_ID 
+'Bruker Biospin'                                    ? ? 16651 1 
+'Bruker Biospin'                                    ? ? 16651 2 
+Varian                                              ? ? 16651 3 
+'Delaglio, Grzesiek, Vuister, Zhu, Pfeifer and Bax' ? ? 16651 4 
+'Delaglio, Grzesiek, Vuister, Zhu, Pfeifer and Bax' ? ? 16651 5 
+'Brunger, Adams, Clore, Gros, Nilges and Read'      ? ? 16651 6 
+Goddard                                             ? ? 16651 7 
+'Koradi, Billeter and Wuthrich'                     ? ? 16651 8 
+# 
+loop_
+_Task.Task 
+_Task.Entry_ID 
+_Task.Software_ID 
+collection                  16651 1 
+collection                  16651 2 
+collection                  16651 3 
+processing                  16651 4 
+'data analysis'             16651 5 
+'structure solution'        16651 6 
+'data analysis'             16651 7 
+'chemical shift assignment' 16651 7 
+'peak picking'              16651 7 
+'data analysis'             16651 8 
+# 
+loop_
+_NMR_spectrometer.Sf_category 
+_NMR_spectrometer.Sf_framecode 
+_NMR_spectrometer.Entry_ID 
+_NMR_spectrometer.ID 
+_NMR_spectrometer.Details 
+_NMR_spectrometer.Manufacturer 
+_NMR_spectrometer.Model 
+_NMR_spectrometer.Serial_number 
+_NMR_spectrometer.Field_strength 
+NMR_spectrometer spectrometer_1 16651 1 Cryoprobe  Varian INOVA  . 600 
+NMR_spectrometer spectrometer_2 16651 2 'RT probe' Bruker Avance . 500 
+# 
+_NMR_spectrometer_list.Sf_category    NMR_spectrometer_list 
+_NMR_spectrometer_list.Sf_framecode   NMR_spectrometer_list 
+_NMR_spectrometer_list.Entry_ID       16651 
+_NMR_spectrometer_list.ID             1 
+# 
+loop_
+_NMR_spectrometer_view.ID 
+_NMR_spectrometer_view.Name 
+_NMR_spectrometer_view.Manufacturer 
+_NMR_spectrometer_view.Model 
+_NMR_spectrometer_view.Serial_number 
+_NMR_spectrometer_view.Field_strength 
+_NMR_spectrometer_view.Details 
+_NMR_spectrometer_view.Citation_ID 
+_NMR_spectrometer_view.Citation_label 
+_NMR_spectrometer_view.Entry_ID 
+_NMR_spectrometer_view.NMR_spectrometer_list_ID 
+1 spectrometer_1 Varian INOVA  ? 600 Cryoprobe  ? ? 16651 1 
+2 spectrometer_2 Bruker Avance ? 500 'RT probe' ? ? 16651 1 
+# 
+_Experiment_list.Sf_category    experiment_list 
+_Experiment_list.Sf_framecode   experiment_list 
+_Experiment_list.Entry_ID       16651 
+_Experiment_list.ID             1 
+_Experiment_list.Details        . 
+# 
+loop_
+_Experiment.ID 
+_Experiment.Name 
+_Experiment.Raw_data_flag 
+_Experiment.NMR_spec_expt_ID 
+_Experiment.NMR_spec_expt_label 
+_Experiment.Sample_ID 
+_Experiment.Sample_label 
+_Experiment.Sample_state 
+_Experiment.Sample_volume 
+_Experiment.Sample_volume_units 
+_Experiment.Sample_condition_list_ID 
+_Experiment.Sample_condition_list_label 
+_Experiment.Sample_spinning_rate 
+_Experiment.Sample_angle 
+_Experiment.NMR_tube_type 
+_Experiment.NMR_spectrometer_ID 
+_Experiment.NMR_spectrometer_label 
+_Experiment.NMR_spectrometer_probe_ID 
+_Experiment.NMR_spectrometer_probe_label 
+_Experiment.NMR_spectral_processing_ID 
+_Experiment.NMR_spectral_processing_label 
+_Experiment.Entry_ID 
+_Experiment.Experiment_list_ID 
+1 '2D 1H-1H NOESY'   no ? ? 1 sample_1 isotropic ? ? 1 sample_conditions_1 ? ? 
+? ? ? ? ? ? ? 16651 1 
+2 '2D 1H-1H NOESY'   no ? ? 2 Sample_2 isotropic ? ? 1 sample_conditions_1 ? ? 
+? ? ? ? ? ? ? 16651 1 
+3 '2D DQF-COSY'      no ? ? 2 Sample_2 isotropic ? ? 1 sample_conditions_1 ? ? 
+? ? ? ? ? ? ? 16651 1 
+4 '2D 1H-1H COSY'    no ? ? 1 sample_1 isotropic ? ? 1 sample_conditions_1 ? ? 
+? ? ? ? ? ? ? 16651 1 
+5 '2D 1H-1H TOCSY'   no ? ? 1 sample_1 isotropic ? ? 1 sample_conditions_1 ? ? 
+? ? ? ? ? ? ? 16651 1 
+6 '2D 1H-13C HSQC'   no ? ? 2 Sample_2 isotropic ? ? 1 sample_conditions_1 ? ? 
+? ? ? ? ? ? ? 16651 1 
+7 '2D 1H-31P HETCOR' no ? ? 2 Sample_2 isotropic ? ? 1 sample_conditions_1 ? ? 
+? ? ? ? ? ? ? 16651 1 
+# 
+_Chem_shift_reference.Sf_category              chem_shift_reference 
+_Chem_shift_reference.Sf_framecode             chemical_shift_reference_1 
+_Chem_shift_reference.Entry_ID                 16651 
+_Chem_shift_reference.ID                       1 
+_Chem_shift_reference.Proton_shifts_flag       yes 
+_Chem_shift_reference.Carbon_shifts_flag       no 
+_Chem_shift_reference.Nitrogen_shifts_flag     no 
+_Chem_shift_reference.Phosphorus_shifts_flag   no 
+_Chem_shift_reference.Other_shifts_flag        no 
+_Chem_shift_reference.Details                  . 
+# 
+_Chem_shift_ref.Atom_type                        H 
+_Chem_shift_ref.Atom_isotope_number              1 
+_Chem_shift_ref.Mol_common_name                  water 
+_Chem_shift_ref.Atom_group                       protons 
+_Chem_shift_ref.Concentration_val                ? 
+_Chem_shift_ref.Concentration_units              ? 
+_Chem_shift_ref.Solvent                          ? 
+_Chem_shift_ref.Rank                             ? 
+_Chem_shift_ref.Chem_shift_units                 ppm 
+_Chem_shift_ref.Chem_shift_val                   4.75 
+_Chem_shift_ref.Ref_method                       internal 
+_Chem_shift_ref.Ref_type                         direct 
+_Chem_shift_ref.Indirect_shift_ratio             1 
+_Chem_shift_ref.External_ref_loc                 . 
+_Chem_shift_ref.External_ref_sample_geometry     . 
+_Chem_shift_ref.External_ref_axis                . 
+_Chem_shift_ref.Indirect_shift_ratio_cit_ID      1 
+_Chem_shift_ref.Indirect_shift_ratio_cit_label   'tRNA-Arg1-(ACG)-s2C32' 
+_Chem_shift_ref.Ref_correction_type              . 
+_Chem_shift_ref.Correction_val                   . 
+_Chem_shift_ref.Correction_val_cit_ID            1 
+_Chem_shift_ref.Correction_val_cit_label         'tRNA-Arg1-(ACG)-s2C32' 
+_Chem_shift_ref.Entry_ID                         16651 
+_Chem_shift_ref.Chem_shift_reference_ID          1 
+# 
+_Assigned_chem_shift_list.Sf_category                   
+assigned_chemical_shifts 
+_Assigned_chem_shift_list.Sf_framecode                  
+assigned_chem_shift_list_1 
+_Assigned_chem_shift_list.Entry_ID                      16651 
+_Assigned_chem_shift_list.ID                            1 
+_Assigned_chem_shift_list.Data_file_name                tRNA-ARG-ACG-s2c.str 
+_Assigned_chem_shift_list.Sample_condition_list_ID      1 
+_Assigned_chem_shift_list.Sample_condition_list_label   sample_conditions_1 
+_Assigned_chem_shift_list.Chem_shift_reference_ID       1 
+_Assigned_chem_shift_list.Chem_shift_reference_label    
+chemical_shift_reference_1 
+_Assigned_chem_shift_list.Chem_shift_1H_err             . 
+_Assigned_chem_shift_list.Chem_shift_13C_err            . 
+_Assigned_chem_shift_list.Chem_shift_15N_err            . 
+_Assigned_chem_shift_list.Chem_shift_31P_err            . 
+_Assigned_chem_shift_list.Chem_shift_2H_err             . 
+_Assigned_chem_shift_list.Chem_shift_19F_err            . 
+_Assigned_chem_shift_list.Error_derivation_method       . 
+_Assigned_chem_shift_list.Details                       . 
+_Assigned_chem_shift_list.Text_data_format              . 
+_Assigned_chem_shift_list.Text_data                     . 
+# 
+_Chem_shift_experiment.Experiment_ID                 2 
+_Chem_shift_experiment.Experiment_name               '2D 1H-1H NOESY' 
+_Chem_shift_experiment.Sample_ID                     ? 
+_Chem_shift_experiment.Sample_label                  ? 
+_Chem_shift_experiment.Sample_state                  ? 
+_Chem_shift_experiment.Entry_ID                      16651 
+_Chem_shift_experiment.Assigned_chem_shift_list_ID   1 
+# 
+loop_
+_Atom_chem_shift.ID 
+_Atom_chem_shift.Assembly_atom_ID 
+_Atom_chem_shift.Entity_assembly_ID 
+_Atom_chem_shift.Entity_ID 
+_Atom_chem_shift.Comp_index_ID 
+_Atom_chem_shift.Seq_ID 
+_Atom_chem_shift.Comp_ID 
+_Atom_chem_shift.Atom_ID 
+_Atom_chem_shift.Atom_type 
+_Atom_chem_shift.Atom_isotope_number 
+_Atom_chem_shift.Val 
+_Atom_chem_shift.Val_err 
+_Atom_chem_shift.Assign_fig_of_merit 
+_Atom_chem_shift.Ambiguity_code 
+_Atom_chem_shift.Occupancy 
+_Atom_chem_shift.Resonance_ID 
+_Atom_chem_shift.Auth_entity_assembly_ID 
+_Atom_chem_shift.Auth_asym_ID 
+_Atom_chem_shift.Auth_seq_ID 
+_Atom_chem_shift.Auth_comp_ID 
+_Atom_chem_shift.Auth_atom_ID 
+_Atom_chem_shift.PDB_record_ID 
+_Atom_chem_shift.PDB_model_num 
+_Atom_chem_shift.PDB_strand_ID 
+_Atom_chem_shift.PDB_ins_code 
+_Atom_chem_shift.PDB_residue_no 
+_Atom_chem_shift.PDB_residue_name 
+_Atom_chem_shift.PDB_atom_name 
+_Atom_chem_shift.Original_PDB_strand_ID 
+_Atom_chem_shift.Original_PDB_residue_no 
+_Atom_chem_shift.Original_PDB_residue_name 
+_Atom_chem_shift.Original_PDB_atom_name 
+_Atom_chem_shift.Details 
+_Atom_chem_shift.Entry_ID 
+_Atom_chem_shift.Assigned_chem_shift_list_ID 
+1   . 1 1 1  1  C "H1'"  H 1 5.584 0.019 . 1 . . . . 27 C "H1'"  . . . . . . . 
+. . . . . 16651 1 
+2   . 1 1 1  1  C "H2'"  H 1 4.489 0.003 . 1 . . . . 27 C "H2'"  . . . . . . . 
+. . . . . 16651 1 
+3   . 1 1 1  1  C "H3'"  H 1 4.537 0.005 . 1 . . . . 27 C "H3'"  . . . . . . . 
+. . . . . 16651 1 
+4   . 1 1 1  1  C "H4'"  H 1 4.386 0.005 . 1 . . . . 27 C "H4'"  . . . . . . . 
+. . . . . 16651 1 
+5   . 1 1 1  1  C H5     H 1 6.063 0.015 . 1 . . . . 27 C H5     . . . . . . . 
+. . . . . 16651 1 
+6   . 1 1 1  1  C "H5'"  H 1 4.110 0.015 . 2 . . . . 27 C "H5'"  . . . . . . . 
+. . . . . 16651 1 
+7   . 1 1 1  1  C "H5''" H 1 3.971 0.005 . 2 . . . . 27 C "H5''" . . . . . . . 
+. . . . . 16651 1 
+8   . 1 1 1  1  C H6     H 1 8.178 0.020 . 1 . . . . 27 C H6     . . . . . . . 
+. . . . . 16651 1 
+9   . 1 1 1  1  C H41    H 1 7.267 0.001 . 2 . . . . 27 C H41    . . . . . . . 
+. . . . . 16651 1 
+10  . 1 1 1  1  C H42    H 1 8.264 0.001 . 2 . . . . 27 C H42    . . . . . . . 
+. . . . . 16651 1 
+11  . 1 1 2  2  U "H1'"  H 1 5.629 0.009 . 1 . . . . 28 U "H1'"  . . . . . . . 
+. . . . . 16651 1 
+12  . 1 1 2  2  U "H2'"  H 1 4.565 0.002 . 1 . . . . 28 U "H2'"  . . . . . . . 
+. . . . . 16651 1 
+13  . 1 1 2  2  U "H3'"  H 1 4.684 0.005 . 1 . . . . 28 U "H3'"  . . . . . . . 
+. . . . . 16651 1 
+14  . 1 1 2  2  U "H4'"  H 1 4.494 0.005 . 1 . . . . 28 U "H4'"  . . . . . . . 
+. . . . . 16651 1 
+15  . 1 1 2  2  U H5     H 1 5.479 0.021 . 1 . . . . 28 U H5     . . . . . . . 
+. . . . . 16651 1 
+16  . 1 1 2  2  U "H5'"  H 1 4.568 0.005 . 2 . . . . 28 U "H5'"  . . . . . . . 
+. . . . . 16651 1 
+17  . 1 1 2  2  U "H5''" H 1 4.189 0.011 . 2 . . . . 28 U "H5''" . . . . . . . 
+. . . . . 16651 1 
+18  . 1 1 2  2  U H6     H 1 8.163 0.023 . 1 . . . . 28 U H6     . . . . . . . 
+. . . . . 16651 1 
+19  . 1 1 3  3  C "H1'"  H 1 5.648 0.005 . 1 . . . . 29 C "H1'"  . . . . . . . 
+. . . . . 16651 1 
+20  . 1 1 3  3  C "H2'"  H 1 4.609 0.001 . 1 . . . . 29 C "H2'"  . . . . . . . 
+. . . . . 16651 1 
+21  . 1 1 3  3  C "H3'"  H 1 4.571 0.043 . 1 . . . . 29 C "H3'"  . . . . . . . 
+. . . . . 16651 1 
+22  . 1 1 3  3  C H5     H 1 5.723 0.015 . 1 . . . . 29 C H5     . . . . . . . 
+. . . . . 16651 1 
+23  . 1 1 3  3  C "H5'"  H 1 4.581 0.003 . 2 . . . . 29 C "H5'"  . . . . . . . 
+. . . . . 16651 1 
+24  . 1 1 3  3  C "H5''" H 1 4.176 0.004 . 2 . . . . 29 C "H5''" . . . . . . . 
+. . . . . 16651 1 
+25  . 1 1 3  3  C H6     H 1 7.910 0.023 . 1 . . . . 29 C H6     . . . . . . . 
+. . . . . 16651 1 
+26  . 1 1 3  3  C H41    H 1 6.758 0.001 . 2 . . . . 29 C H41    . . . . . . . 
+. . . . . 16651 1 
+27  . 1 1 3  3  C H42    H 1 8.222 0.001 . 2 . . . . 29 C H42    . . . . . . . 
+. . . . . 16651 1 
+28  . 1 1 4  4  G "H1'"  H 1 5.638 0.020 . 1 . . . . 30 G "H1'"  . . . . . . . 
+. . . . . 16651 1 
+29  . 1 1 4  4  G "H2'"  H 1 4.601 0.006 . 1 . . . . 30 G "H2'"  . . . . . . . 
+. . . . . 16651 1 
+30  . 1 1 4  4  G "H3'"  H 1 4.497 0.003 . 1 . . . . 30 G "H3'"  . . . . . . . 
+. . . . . 16651 1 
+31  . 1 1 4  4  G "H4'"  H 1 4.664 0.003 . 1 . . . . 30 G "H4'"  . . . . . . . 
+. . . . . 16651 1 
+32  . 1 1 4  4  G "H5'"  H 1 4.215 0.008 . 2 . . . . 30 G "H5'"  . . . . . . . 
+. . . . . 16651 1 
+33  . 1 1 4  4  G H8     H 1 7.480 0.020 . 1 . . . . 30 G H8     . . . . . . . 
+. . . . . 16651 1 
+34  . 1 1 5  5  G "H1'"  H 1 5.656 0.020 . 1 . . . . 31 G "H1'"  . . . . . . . 
+. . . . . 16651 1 
+35  . 1 1 5  5  G "H2'"  H 1 4.477 0.004 . 1 . . . . 31 G "H2'"  . . . . . . . 
+. . . . . 16651 1 
+36  . 1 1 5  5  G "H3'"  H 1 4.440 0.006 . 1 . . . . 31 G "H3'"  . . . . . . . 
+. . . . . 16651 1 
+37  . 1 1 5  5  G "H4'"  H 1 4.473 0.005 . 1 . . . . 31 G "H4'"  . . . . . . . 
+. . . . . 16651 1 
+38  . 1 1 5  5  G "H5'"  H 1 4.480 0.001 . 2 . . . . 31 G "H5'"  . . . . . . . 
+. . . . . 16651 1 
+39  . 1 1 5  5  G "H5''" H 1 4.082 0.002 . 2 . . . . 31 G "H5''" . . . . . . . 
+. . . . . 16651 1 
+40  . 1 1 5  5  G H8     H 1 7.124 0.018 . 1 . . . . 31 G H8     . . . . . . . 
+. . . . . 16651 1 
+41  . 1 1 6  6  N "H1'"  H 1 5.985 0.015 . 1 . . . . 32 s "H1'"  . . . . . . . 
+. . . . . 16651 1 
+42  . 1 1 6  6  N "H2'"  H 1 4.594 0.001 . 1 . . . . 32 s "H2'"  . . . . . . . 
+. . . . . 16651 1 
+43  . 1 1 6  6  N "H3'"  H 1 4.450 0.070 . 1 . . . . 32 s "H3'"  . . . . . . . 
+. . . . . 16651 1 
+44  . 1 1 6  6  N "H4'"  H 1 4.422 0.005 . 1 . . . . 32 s "H4'"  . . . . . . . 
+. . . . . 16651 1 
+45  . 1 1 6  6  N H5     H 1 5.675 0.015 . 1 . . . . 32 s H5     . . . . . . . 
+. . . . . 16651 1 
+46  . 1 1 6  6  N "H5'"  H 1 4.456 0.013 . 2 . . . . 32 s "H5'"  . . . . . . . 
+. . . . . 16651 1 
+47  . 1 1 6  6  N "H5''" H 1 4.073 0.013 . 2 . . . . 32 s "H5''" . . . . . . . 
+. . . . . 16651 1 
+48  . 1 1 6  6  N H6     H 1 7.867 0.023 . 1 . . . . 32 s H6     . . . . . . . 
+. . . . . 16651 1 
+49  . 1 1 7  7  U "H1'"  H 1 5.880 0.012 . 1 . . . . 33 U "H1'"  . . . . . . . 
+. . . . . 16651 1 
+50  . 1 1 7  7  U "H2'"  H 1 4.255 0.004 . 1 . . . . 33 U "H2'"  . . . . . . . 
+. . . . . 16651 1 
+51  . 1 1 7  7  U "H3'"  H 1 4.488 0.060 . 1 . . . . 33 U "H3'"  . . . . . . . 
+. . . . . 16651 1 
+52  . 1 1 7  7  U "H4'"  H 1 4.420 0.003 . 1 . . . . 33 U "H4'"  . . . . . . . 
+. . . . . 16651 1 
+53  . 1 1 7  7  U H5     H 1 5.541 0.016 . 1 . . . . 33 U H5     . . . . . . . 
+. . . . . 16651 1 
+54  . 1 1 7  7  U H6     H 1 7.786 0.022 . 1 . . . . 33 U H6     . . . . . . . 
+. . . . . 16651 1 
+55  . 1 1 8  8  A "H1'"  H 1 5.980 0.018 . 1 . . . . 34 A "H1'"  . . . . . . . 
+. . . . . 16651 1 
+56  . 1 1 8  8  A H2     H 1 7.766 0.006 . 1 . . . . 34 A H2     . . . . . . . 
+. . . . . 16651 1 
+57  . 1 1 8  8  A "H2'"  H 1 4.902 0.017 . 1 . . . . 34 A "H2'"  . . . . . . . 
+. . . . . 16651 1 
+58  . 1 1 8  8  A "H3'"  H 1 4.514 0.066 . 1 . . . . 34 A "H3'"  . . . . . . . 
+. . . . . 16651 1 
+59  . 1 1 8  8  A "H4'"  H 1 4.544 0.049 . 1 . . . . 34 A "H4'"  . . . . . . . 
+. . . . . 16651 1 
+60  . 1 1 8  8  A "H5'"  H 1 4.142 0.167 . 2 . . . . 34 A "H5'"  . . . . . . . 
+. . . . . 16651 1 
+61  . 1 1 8  8  A "H5''" H 1 4.102 0.009 . 2 . . . . 34 A "H5''" . . . . . . . 
+. . . . . 16651 1 
+62  . 1 1 8  8  A H8     H 1 8.454 0.022 . 1 . . . . 34 A H8     . . . . . . . 
+. . . . . 16651 1 
+63  . 1 1 9  9  C "H1'"  H 1 5.721 0.017 . 1 . . . . 35 C "H1'"  . . . . . . . 
+. . . . . 16651 1 
+64  . 1 1 9  9  C "H2'"  H 1 4.126 0.008 . 1 . . . . 35 C "H2'"  . . . . . . . 
+. . . . . 16651 1 
+65  . 1 1 9  9  C "H3'"  H 1 4.434 0.006 . 1 . . . . 35 C "H3'"  . . . . . . . 
+. . . . . 16651 1 
+66  . 1 1 9  9  C "H4'"  H 1 3.976 0.257 . 1 . . . . 35 C "H4'"  . . . . . . . 
+. . . . . 16651 1 
+67  . 1 1 9  9  C H5     H 1 5.713 0.039 . 1 . . . . 35 C H5     . . . . . . . 
+. . . . . 16651 1 
+68  . 1 1 9  9  C "H5'"  H 1 3.784 0.079 . 2 . . . . 35 C "H5'"  . . . . . . . 
+. . . . . 16651 1 
+69  . 1 1 9  9  C "H5''" H 1 3.628 0.012 . 2 . . . . 35 C "H5''" . . . . . . . 
+. . . . . 16651 1 
+70  . 1 1 9  9  C H6     H 1 7.523 0.019 . 1 . . . . 35 C H6     . . . . . . . 
+. . . . . 16651 1 
+71  . 1 1 10 10 G "H1'"  H 1 5.617 0.018 . 1 . . . . 36 G "H1'"  . . . . . . . 
+. . . . . 16651 1 
+72  . 1 1 10 10 G "H2'"  H 1 4.791 0.083 . 1 . . . . 36 G "H2'"  . . . . . . . 
+. . . . . 16651 1 
+73  . 1 1 10 10 G "H4'"  H 1 4.391 0.002 . 1 . . . . 36 G "H4'"  . . . . . . . 
+. . . . . 16651 1 
+74  . 1 1 10 10 G "H5'"  H 1 4.452 0.005 . 2 . . . . 36 G "H5'"  . . . . . . . 
+. . . . . 16651 1 
+75  . 1 1 10 10 G "H5''" H 1 4.007 0.013 . 2 . . . . 36 G "H5''" . . . . . . . 
+. . . . . 16651 1 
+76  . 1 1 10 10 G H8     H 1 7.676 0.021 . 1 . . . . 36 G H8     . . . . . . . 
+. . . . . 16651 1 
+77  . 1 1 11 11 A "H1'"  H 1 5.936 0.018 . 1 . . . . 37 A "H1'"  . . . . . . . 
+. . . . . 16651 1 
+78  . 1 1 11 11 A H2     H 1 8.031 0.002 . 1 . . . . 37 A H2     . . . . . . . 
+. . . . . 16651 1 
+79  . 1 1 11 11 A "H2'"  H 1 4.919 0.013 . 1 . . . . 37 A "H2'"  . . . . . . . 
+. . . . . 16651 1 
+80  . 1 1 11 11 A "H3'"  H 1 4.689 0.077 . 1 . . . . 37 A "H3'"  . . . . . . . 
+. . . . . 16651 1 
+81  . 1 1 11 11 A "H4'"  H 1 4.636 0.017 . 1 . . . . 37 A "H4'"  . . . . . . . 
+. . . . . 16651 1 
+82  . 1 1 11 11 A "H5'"  H 1 4.422 0.010 . 2 . . . . 37 A "H5'"  . . . . . . . 
+. . . . . 16651 1 
+83  . 1 1 11 11 A "H5''" H 1 4.322 0.020 . 2 . . . . 37 A "H5''" . . . . . . . 
+. . . . . 16651 1 
+84  . 1 1 11 11 A H8     H 1 8.325 0.034 . 1 . . . . 37 A H8     . . . . . . . 
+. . . . . 16651 1 
+85  . 1 1 12 12 A "H1'"  H 1 5.692 0.012 . 1 . . . . 38 A "H1'"  . . . . . . . 
+. . . . . 16651 1 
+86  . 1 1 12 12 A H2     H 1 8.135 0.022 . 1 . . . . 38 A H2     . . . . . . . 
+. . . . . 16651 1 
+87  . 1 1 12 12 A "H2'"  H 1 4.646 0.012 . 1 . . . . 38 A "H2'"  . . . . . . . 
+. . . . . 16651 1 
+88  . 1 1 12 12 A "H3'"  H 1 4.368 0.010 . 1 . . . . 38 A "H3'"  . . . . . . . 
+. . . . . 16651 1 
+89  . 1 1 12 12 A "H4'"  H 1 4.419 0.054 . 1 . . . . 38 A "H4'"  . . . . . . . 
+. . . . . 16651 1 
+90  . 1 1 12 12 A H8     H 1 8.006 0.019 . 1 . . . . 38 A H8     . . . . . . . 
+. . . . . 16651 1 
+91  . 1 1 13 13 C "H1'"  H 1 5.087 0.017 . 1 . . . . 39 C "H1'"  . . . . . . . 
+. . . . . 16651 1 
+92  . 1 1 13 13 C "H2'"  H 1 4.209 0.007 . 1 . . . . 39 C "H2'"  . . . . . . . 
+. . . . . 16651 1 
+93  . 1 1 13 13 C "H3'"  H 1 4.426 0.005 . 1 . . . . 39 C "H3'"  . . . . . . . 
+. . . . . 16651 1 
+94  . 1 1 13 13 C "H4'"  H 1 4.370 0.004 . 1 . . . . 39 C "H4'"  . . . . . . . 
+. . . . . 16651 1 
+95  . 1 1 13 13 C H5     H 1 5.386 0.016 . 1 . . . . 39 C H5     . . . . . . . 
+. . . . . 16651 1 
+96  . 1 1 13 13 C "H5'"  H 1 4.197 0.001 . 2 . . . . 39 C "H5'"  . . . . . . . 
+. . . . . 16651 1 
+97  . 1 1 13 13 C "H5''" H 1 4.080 0.001 . 2 . . . . 39 C "H5''" . . . . . . . 
+. . . . . 16651 1 
+98  . 1 1 13 13 C H6     H 1 7.464 0.018 . 1 . . . . 39 C H6     . . . . . . . 
+. . . . . 16651 1 
+99  . 1 1 13 13 C H41    H 1 7.026 0.003 . 2 . . . . 39 C H41    . . . . . . . 
+. . . . . 16651 1 
+100 . 1 1 13 13 C H42    H 1 8.460 0.001 . 2 . . . . 39 C H42    . . . . . . . 
+. . . . . 16651 1 
+101 . 1 1 14 14 C "H1'"  H 1 5.472 0.014 . 1 . . . . 40 C "H1'"  . . . . . . . 
+. . . . . 16651 1 
+102 . 1 1 14 14 C "H2'"  H 1 4.477 0.007 . 1 . . . . 40 C "H2'"  . . . . . . . 
+. . . . . 16651 1 
+103 . 1 1 14 14 C "H3'"  H 1 4.362 0.010 . 1 . . . . 40 C "H3'"  . . . . . . . 
+. . . . . 16651 1 
+104 . 1 1 14 14 C "H4'"  H 1 4.579 0.002 . 1 . . . . 40 C "H4'"  . . . . . . . 
+. . . . . 16651 1 
+105 . 1 1 14 14 C H5     H 1 5.458 0.018 . 1 . . . . 40 C H5     . . . . . . . 
+. . . . . 16651 1 
+106 . 1 1 14 14 C "H5'"  H 1 4.458 0.008 . 2 . . . . 40 C "H5'"  . . . . . . . 
+. . . . . 16651 1 
+107 . 1 1 14 14 C "H5''" H 1 4.115 0.003 . 2 . . . . 40 C "H5''" . . . . . . . 
+. . . . . 16651 1 
+108 . 1 1 14 14 C H6     H 1 7.773 0.023 . 1 . . . . 40 C H6     . . . . . . . 
+. . . . . 16651 1 
+109 . 1 1 14 14 C H41    H 1 6.691 0.001 . 2 . . . . 40 C H41    . . . . . . . 
+. . . . . 16651 1 
+110 . 1 1 14 14 C H42    H 1 8.234 0.002 . 2 . . . . 40 C H42    . . . . . . . 
+. . . . . 16651 1 
+111 . 1 1 15 15 G "H1'"  H 1 5.635 0.020 . 1 . . . . 41 G "H1'"  . . . . . . . 
+. . . . . 16651 1 
+112 . 1 1 15 15 G "H2'"  H 1 4.615 0.003 . 1 . . . . 41 G "H2'"  . . . . . . . 
+. . . . . 16651 1 
+113 . 1 1 15 15 G "H3'"  H 1 4.604 0.001 . 1 . . . . 41 G "H3'"  . . . . . . . 
+. . . . . 16651 1 
+114 . 1 1 15 15 G "H4'"  H 1 4.634 0.002 . 1 . . . . 41 G "H4'"  . . . . . . . 
+. . . . . 16651 1 
+115 . 1 1 15 15 G "H5'"  H 1 4.464 0.002 . 2 . . . . 41 G "H5'"  . . . . . . . 
+. . . . . 16651 1 
+116 . 1 1 15 15 G "H5''" H 1 4.133 0.006 . 2 . . . . 41 G "H5''" . . . . . . . 
+. . . . . 16651 1 
+117 . 1 1 15 15 G H8     H 1 7.488 0.023 . 1 . . . . 41 G H8     . . . . . . . 
+. . . . . 16651 1 
+118 . 1 1 16 16 A "H1'"  H 1 5.873 0.015 . 1 . . . . 42 A "H1'"  . . . . . . . 
+. . . . . 16651 1 
+119 . 1 1 16 16 A H2     H 1 7.562 0.020 . 1 . . . . 42 A H2     . . . . . . . 
+. . . . . 16651 1 
+120 . 1 1 16 16 A "H2'"  H 1 4.504 0.004 . 1 . . . . 42 A "H2'"  . . . . . . . 
+. . . . . 16651 1 
+121 . 1 1 16 16 A "H3'"  H 1 4.594 0.002 . 1 . . . . 42 A "H3'"  . . . . . . . 
+. . . . . 16651 1 
+122 . 1 1 16 16 A "H4'"  H 1 4.449 0.002 . 1 . . . . 42 A "H4'"  . . . . . . . 
+. . . . . 16651 1 
+123 . 1 1 16 16 A "H5'"  H 1 4.403 0.146 . 2 . . . . 42 A "H5'"  . . . . . . . 
+. . . . . 16651 1 
+124 . 1 1 16 16 A "H5''" H 1 4.122 0.003 . 2 . . . . 42 A "H5''" . . . . . . . 
+. . . . . 16651 1 
+125 . 1 1 16 16 A H8     H 1 7.714 0.025 . 1 . . . . 42 A H8     . . . . . . . 
+. . . . . 16651 1 
+126 . 1 1 17 17 G "H1'"  H 1 5.736 0.018 . 1 . . . . 43 G "H1'"  . . . . . . . 
+. . . . . 16651 1 
+127 . 1 1 17 17 G "H2'"  H 1 3.952 0.004 . 1 . . . . 43 G "H2'"  . . . . . . . 
+. . . . . 16651 1 
+128 . 1 1 17 17 G "H3'"  H 1 4.601 0.003 . 1 . . . . 43 G "H3'"  . . . . . . . 
+. . . . . 16651 1 
+129 . 1 1 17 17 G "H4'"  H 1 4.186 0.014 . 1 . . . . 43 G "H4'"  . . . . . . . 
+. . . . . 16651 1 
+130 . 1 1 17 17 G "H5'"  H 1 4.499 0.004 . 2 . . . . 43 G "H5'"  . . . . . . . 
+. . . . . 16651 1 
+131 . 1 1 17 17 G "H5''" H 1 3.997 0.020 . 2 . . . . 43 G "H5''" . . . . . . . 
+. . . . . 16651 1 
+132 . 1 1 17 17 G H8     H 1 7.226 0.018 . 1 . . . . 43 G H8     . . . . . . . 
+. . . . . 16651 1 
+# 

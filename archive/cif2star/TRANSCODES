@@ -1,0 +1,68 @@
+NMRIF <-> PDBX conversion
+
+0 : nothing
+
+1 : 
+2 : noclobber
+3 :
+4 :
+5 : new val = src row # + 1 (rows counted from 0)
+
+9 : new val = what's in variableTypeMatch column in the dictionary
+10: convert various forms of 'y','true', '1', etc. to "yes"/"no" (to NMRIF) or "Y"/"N" (to PDBX)
+11: append to existing value
+12: prepend to existing value
+
+50: new val = 1 (local IDs in unique saveframes, probably broken for Assembly.ID)
+
+55: if value is "not applicable", new val = "?" (! not 1-to-1)
+
+45: convert A to 1, B to 2 etc. Intended for converting asym IDs to entity IDs or some such. 
+    Single uppercase letter only, broken for 2-letter/lowercase chain IDs.
+
+6 :
+7 :
+8 :
+  1..12, 45, 50, 55 all fall through to case 8
+  actual value update code is here.
+
+15: combine title, namea, and initials into string.
+
+20..23: ??? something for combining sample conditions -- done after al 3 pieces have been collected
+
+30: generate sample details???
+
+-15: reverse of #15 above, try to split name string into components.
+
+-40: split _struct_keyword.text on commas into an NMRIF loop
+
+-20: ??? see below
+
+-22: ??? put in new val from -20 and something from #21 above
+
+
+pre-cook NMRIF
+--------------
+
+Citation status "in preparation", "in press", or "submitted" -> "To be Published" (! not 1-to-1)
+
+If _Entry.CASP_target is "yes", append "(CASP target)" to entry title (!! modifies author data)
+
+
+post-cook NMRIF
+---------------
+
+fill in PDB ID columns with ID given on command line
+
+lowercase Entity.Type
+
+LIGANDS ONLY (i.e. not used anymore): fill Entity Ambiguous_conformational_states,
+Ambiguous_chem_comp_sites, Nstd_chirality, and Nstd_linkage with "no".
+
+set Chem_comp.Aromatic based on atoms
+
+LIGANDS ONLY: fill Entity_comp_index.ID
+
+Struct_keywords: Text to loop (? code -40 again?)
+
+

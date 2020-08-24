@@ -1,0 +1,23 @@
+
+Build requirements:
+-------------------
+
+getopt
+pcre
+
+SANS parsers
+
+RCSB software (http://sw-tools.pdb.org/):
+ cifparse-obj
+ ciftable
+(etc
+ regex
+ common
+ tables
+ cif-file
+ cif-parser)
+
+g++ 4.4.6 (centos 6.2),
+g++ 4.1.2 (centos 5.8) -- but you'll need to rename/symlink RCSB's lib/all.a
+to liball.a and edit the Makefile accordingly. 
+Goes for earlier g++ versions, too (they should work).
