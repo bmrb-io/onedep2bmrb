@@ -220,8 +220,22 @@ class ChemShiftHandler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler
         rs = self._entry._db.query( 'select count(*) from "Atom_chem_shift" where "Assigned_chem_shift_list_ID" is NULL' )
         row = rs.next()
         if row[0] != 0 :
+            if len( cslists ) != 1 :
+                sys.stderr.write( "ERR: %d rows without Assigned_chem_shift_list_ID in Atom_chem_shift\n" % (row[0],) )
+                sys.stderr.write( "     and %d chemical shift lists\n" % (len( cslists ),) )
+                pprint.pprint( cslists )
+                raise Exception( "Cannot map CS lists" )
+            else :
+                rc = self._entry._db.execute( 'update "Atom_chem_shift" set "Assigned_chem_shift_list_ID"='
+                   + '(select distinct "ID" from "Assigned_chem_shift_list")' )
+
+# try again
+#
+        rs = self._entry._db.query( 'select count(*) from "Atom_chem_shift" where "Assigned_chem_shift_list_ID" is NULL' )
+        row = rs.next()
+        if row[0] != 0 :
             sys.stderr.write( "ERR: %d rows without Assigned_chem_shift_list_ID in Atom_chem_shift\n" % (row[0],) )
-            sys.stderr.write( "     and %d chemical shift lists\n" % (len( cslists ),) )
+            sys.stderr.write( "     and %d chemical shift lists after cleanup\n" % (len( cslists ),) )
             pprint.pprint( cslists )
             raise Exception( "Cannot map CS lists" )
 

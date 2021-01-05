@@ -156,7 +156,7 @@ class OneDepToBmrb( object ) :
 
                     elif pc.code == 9 :         # use value from cd.special unless it's a special exception
                         pdbtag = "_%s.%s" % (pc.table, pc.col)
-                        print "!!! %s : code 9, %s" % (pdbtag, startable.cols[c].getspecial( pdbtag ))
+                        sys.stdout.write( "!!! %s : code 9, %s\n" % (pdbtag, startable.cols[c].getspecial( pdbtag )) )
                         params["val"] = pc.special
 
                     elif pc.code == 10 :        # boolean values: normalize to yes/no
@@ -243,11 +243,15 @@ class OneDepToBmrb( object ) :
 # except for the exceptions: concentration range is supposed to be $NUM-$NUM
 #
                         if (pc.table == "pdbx_nmr_exptl_sample") and (pc.col == "concentration_range") :
-                            m = re.search( "^\s*(-?[^\-]+)\s*-\s(.+)\s*$", params["val"] )
-                            if not m : continue
-                            if c == "Concentration_val_max" : params["val"] = m.group( 2 )
-                            elif c == "Concentration_val_min" : params["val"] = m.group( 1 )
-                        continue
+                            if params["val"] is None : continue
+                            m = re.search( "^(.+)\s*-\s*(.+)$", params["val"].strip() )
+                            if not m : 
+#                                sys.stdout.write( "!! _pdbx_nmr_exptl_sample.concentration_range: no match\n" ) 
+                                continue
+#                            sys.stdout.write( "!! the column is %s and max/min are %s, %s\n" % (c,m.group( 2 ),m.group( 1 )) ) 
+                            if c == "Concentration_val_max" : params["val"] = m.group( 2 ).strip()
+                            elif c == "Concentration_val_min" : params["val"] = m.group( 1 ).strip()
+#                        continue
 
                     elif abs( pc.code ) == 1001 :    # marks chem_comp tags (many rows) mapped to entity and assembly (few rows) tags.
                                                     # that's really messing things up and usually they're "fallback" mappings that aren't used.
