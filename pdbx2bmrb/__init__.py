@@ -5,12 +5,12 @@
 
 import sys
 
-SAS_PATH = "/share/dmaziuk/projects/github/SAS/python"
+SAS_PATH = "/projects/BMRB/software/SAS/python"
 sys.path.append( SAS_PATH )
 
 import sas
 
-STAROBJ_PATH = "/share/dmaziuk/projects/github/starobj"
+STAROBJ_PATH = "/projects/BMRB/software/starobj"
 sys.path.append( STAROBJ_PATH )
 
 import starobj
