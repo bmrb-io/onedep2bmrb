@@ -24,7 +24,7 @@ if __name__ == "__main__" :
     else : infile = sys.stdin
 
     rgx = re.compile( r"^_([^.]+)\.(.+)$" )
-    bad = re.compile( r"(^\d)|(^database$)|(^order$)|(^group$)|([()[\]{}/\\%-])" )
+    bad = re.compile( r"(^\d)|(^database$)|(^order$)|(^group$)|(^index$)|([()[\]{}/\\%-])" )
     dic = {}
 
     for line in infile :
