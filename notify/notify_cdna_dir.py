@@ -1371,7 +1371,8 @@ class Notifier(object):
         mailfrom = self._props.get("notify", "mailfrom")
         mailhost = self._props.get("notify", "server")
 
-        msg = email.MIMEText.MIMEText(body)
+        from email.mime.text import MIMEText
+        msg = MIMEText(body)
         msg["From"] = mailfrom
         msg["Reply-To"] = addrs[0]
 
