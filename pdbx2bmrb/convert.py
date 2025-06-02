@@ -240,7 +240,7 @@ class OneDepToBmrb( object ) :
 #
                         if (pc.table == "pdbx_nmr_exptl_sample") and (pc.col == "concentration_range") :
                             if params["val"] is None : continue
-                            m = re.search( "^(.+)\s*-\s*(.+)$", params["val"].strip() )
+                            m = re.search( r"^(.+)\s*-\s*(.+)$", params["val"].strip() )
                             if not m : 
 #                                sys.stdout.write( "!! _pdbx_nmr_exptl_sample.concentration_range: no match\n" ) 
                                 continue
