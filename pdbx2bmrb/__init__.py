@@ -4,8 +4,8 @@ import sys
 import time
 from contextlib import contextmanager
 
-SAS_PATH = "/projects/BMRB/software/SAS/python"
-STAROBJ_PATH = "/projects/BMRB/software/starobj"
+SAS_PATH = "/projects/BMRB/software/SAS3/python"
+STAROBJ_PATH = "/projects/BMRB/software/starobj3"
 sys.path.extend([SAS_PATH, STAROBJ_PATH])
 
 import sas

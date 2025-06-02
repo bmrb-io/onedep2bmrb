@@ -6,6 +6,9 @@ import configparser
 import pprint
 import traceback
 import optparse
+
+# Add the parent directory to the path to make the module importable
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import pdbx2bmrb
 
 # read mmcif and return its db wrapper
