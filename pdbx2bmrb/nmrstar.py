@@ -1,4 +1,4 @@
-#!/usr/bin/python -u
+#!/usr/bin/env python3
 #
 # Wrapper class for BMRB entry file.
 # Has half of the code for converting from PDBX, the other half is in convert.py
@@ -7,14 +7,11 @@
 
 
 import sys
-import os
 import re
-import collections
+import collections.abc
 import configparser
 import pprint
 
-_UP = os.path.realpath( "%s/../" % (os.path.split( __file__ )[0],) )
-sys.path.append( _UP )
 import pdbx2bmrb
 
 #
@@ -174,7 +171,7 @@ class BMRBEntry( object ) :
             pprint.pprint( tables )
 
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         sfcat = category
         sfname = category
@@ -279,7 +276,7 @@ class BMRBEntry( object ) :
         if self.verbose : sys.stdout.write( "%s.make_replicable_saveframe(%s, %s)\n" % (self.__class__.__name__,category,freetable) )
 
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         ids = {}
         sql = "select distinct " + cifidtag + " from " + ciftable
@@ -373,7 +370,7 @@ class BMRBEntry( object ) :
     def make_entry_information( self, cifdb, tables ) :
         if self.verbose : sys.stdout.write( "%s.make_entry_information()\n" % (self.__class__.__name__,) )
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         sfname = "entry_information"
         sfcat = "entry_information"
@@ -455,7 +452,7 @@ class BMRBEntry( object ) :
     #
     def make_citations( self, cifdb, tables ) :
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         ids = {}
         sql = "select distinct id from citation"
@@ -543,7 +540,7 @@ class BMRBEntry( object ) :
             sys.stdout.write( "%s.make_entities()\n" % (self.__class__.__name__,) )
 
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         ids = {}
         sql = "select distinct id from entity"
@@ -678,7 +675,7 @@ class BMRBEntry( object ) :
             sys.stdout.write( "%s.make_chem_comps()\n" % (self.__class__.__name__,) )
 
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         ids = {}
         sql = "select distinct id from chem_comp"
@@ -776,7 +773,7 @@ class BMRBEntry( object ) :
             sys.stdout.write( "%s.make_sample_conditions()\n" % (self.__class__.__name__,) )
 
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         ids = {}
         sfcat = "sample_conditions"
@@ -897,7 +894,7 @@ class BMRBEntry( object ) :
             sys.stdout.write( "%s.make_warez()\n" % (self.__class__.__name__,) )
 
         assert isinstance( cifdb,  pdbx2bmrb.CifReader )
-        assert isinstance( tables, collections.Iterable )
+        assert isinstance( tables, collections.abc.Iterable )
 
         sfcat = "software"
 

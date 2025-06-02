@@ -1,17 +1,10 @@
-#!/usr/bin/python -u
-#
-# here be dragons
-#
-
-
+#!/usr/bin/env python3
 
 import os
 import sys
 import re
 import pprint
 
-_UP = os.path.realpath( os.path.join( os.path.split( __file__ )[0], ".." ) )
-sys.path.append( _UP )
 import pdbx2bmrb
 
 #
@@ -753,7 +746,7 @@ class ChemShifts( object ) :
         sql = 'update "Atom_chem_shift" set "Atom_isotope_number"=:iso where "Entry_ID"=:entryid ' \
             + 'and "Atom_isotope_number" is NULL and "Atom_type"=:nuc'
 
-        for (nuc,iso) in pdbx2bmrb.BMRBEntry.ISOTOPES.items() :
+        for (nuc,iso) in list(pdbx2bmrb.BMRBEntry.ISOTOPES.items()) :
 
             if self.verbose : 
                 sys.stdout.write( sql )

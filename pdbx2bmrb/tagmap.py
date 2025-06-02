@@ -1,10 +1,8 @@
-#!/usr/bin/python -u
+#!/usr/bin/env python3
 #
 # make a bmrb -> pdbx tag map out of adit_item_tbl and nmr_cif_match
 #
 #
-
-
 
 import sys
 import os
@@ -15,9 +13,6 @@ import pprint
 
 from optparse import OptionParser
 
-#_UP = os.path.realpath( os.path.join( os.path.split( __file__ )[0], ".." ) )
-#sys.path.append( _UP )
-#import pdbx2bmrb
 
 #########################################################################################
 # read tag map from CSV to DB table
@@ -134,7 +129,7 @@ def make_bmrb_taglist( conn, csvfile, verbose = False ) :
                     if verbose :
                         sys.stdout.write( sql )
                         sys.stdout.write( " : " )
-                        for (key, val) in params.items() :
+                        for (key, val) in list(params.items()) :
                             sys.stdout.write( "%s:%s, " % (key,val,) )
 
                     curs.execute( sql, params )
@@ -252,7 +247,7 @@ def make_pdb_taglist( conn, csvfile, verbose = False ) :
                         if verbose :
                             sys.stdout.write( sql )
                             sys.stdout.write( " : " )
-                            for (key, val) in params.items() :
+                            for (key, val) in list(params.items()) :
                                 sys.stdout.write( "%s:%s, " % (key,val,) )
 
                         curs.execute( sql, params )
@@ -376,7 +371,7 @@ if __name__ == "__main__" :
         while True :
             row = curs.fetchone()
             if row == None : break
-            print("%s,_%s.%s" % tuple( row ))
+            print(("%s,_%s.%s" % tuple( row )))
 
     make_pdb_taglist( conn, csvfile = matchfile, verbose = options.verbose )
 
@@ -385,7 +380,7 @@ if __name__ == "__main__" :
         while True :
             row = curs.fetchone()
             if row == None : break
-            print("%s,%s,%s,%s,_%s.%s" % tuple( row ))
+            print(("%s,%s,%s,%s,_%s.%s" % tuple( row )))
 
     make_map( conn, verbose = options.verbose )
 

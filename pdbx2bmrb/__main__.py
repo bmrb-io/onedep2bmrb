@@ -1,20 +1,11 @@
-#!/usr/bin/python -u
-#
-#
-
+#!/usr/bin/env python3
 
 import sys
 import os
 import configparser
 import pprint
 import traceback
-
-# keep it 2.6 compatible
-#
 import optparse
-
-_UP = os.path.realpath( os.path.join( os.path.split( __file__ )[0], ".." ) )
-sys.path.append( _UP )
 import pdbx2bmrb
 
 # read mmcif and return its db wrapper

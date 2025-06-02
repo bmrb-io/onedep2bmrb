@@ -63,7 +63,7 @@ import email
 import pprint
 import re
 import glob
-import collections
+import collections.abc
 import traceback
 import sqlite3
 
@@ -746,7 +746,7 @@ class Notifier(object):
         # save
         #
         with open(stampfile, "w") as out:
-            for (depnum, stamp) in files.items():
+            for (depnum, stamp) in list(files.items()):
                 out.write("%s,%s\n" % (depnum, str(int(stamp))))
 
         return
@@ -1365,7 +1365,7 @@ class Notifier(object):
         if (recipients is None) or (len(recipients) < 1):
             addrs = [self._props.get("notify", "mailto")]
         else:
-            assert isinstance(recipients, collections.Iterable)
+            assert isinstance(recipients, collections.abc.Iterable)
             addrs = list(set(recipients))
 
         mailfrom = self._props.get("notify", "mailfrom")

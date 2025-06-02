@@ -1,4 +1,4 @@
-#!/usr/bin/python -u
+#!/usr/bin/env python3
 #
 # helper class with some of the conversion functions
 # this all ought to be refactored into some semblance

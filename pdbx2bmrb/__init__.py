@@ -1,18 +1,14 @@
-#!/usr/bin/python -u
-#
-
-
+#!/usr/bin/env python3
 
 import sys
+import time
+from contextlib import contextmanager
 
 SAS_PATH = "/projects/BMRB/software/SAS/python"
-sys.path.append( SAS_PATH )
+STAROBJ_PATH = "/projects/BMRB/software/starobj"
+sys.path.extend([SAS_PATH, STAROBJ_PATH])
 
 import sas
-
-STAROBJ_PATH = "/projects/BMRB/software/starobj"
-sys.path.append( STAROBJ_PATH )
-
 import starobj
 
 from .tagmap import readcsv
@@ -21,11 +17,6 @@ from .nmrstar import BMRBEntry
 from .datastruct import CifCol, StarCol, StarTable
 from .convert import OneDepToBmrb
 from .chemshifts import ChemShiftHandler, ChemShifts
-
-# simple timings
-#
-from contextlib import contextmanager
-import time
 
 @contextmanager
 def timer( label, verbose = True ) :

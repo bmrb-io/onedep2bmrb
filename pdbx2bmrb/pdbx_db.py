@@ -1,4 +1,4 @@
-#!/usr/bin/python -u
+#!/usr/bin/env python3
 #
 # read a list of tags produced by pdbx_dict.py (or whoever), one tag per line:
 # _atom_site_anisotrop.id

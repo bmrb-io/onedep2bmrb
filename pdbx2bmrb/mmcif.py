@@ -1,4 +1,4 @@
-#!/usr/bin/python -u
+#!/usr/bin/env python3
 #
 
 
@@ -8,8 +8,6 @@ import re
 import pprint
 import sqlite3
 
-_UP = os.path.realpath( "%s/../" % (os.path.split( __file__ )[0],) )
-sys.path.append( _UP )
 from pdbx2bmrb import sas
 
 class CifReader( sas.ContentHandler, sas.ErrorHandler ) :
@@ -197,7 +195,7 @@ class CifReader( sas.ContentHandler, sas.ErrorHandler ) :
         params = {}
         colstr = ""
         valstr = ""
-        for (col,val) in self._row.items() :
+        for (col,val) in list(self._row.items()) :
             key = "x%s" % (col.strip( '"' ).replace( "[", "_" ).replace( "]", "_" ).replace( "-", "_"),)
 
 # this should be handled in data()
