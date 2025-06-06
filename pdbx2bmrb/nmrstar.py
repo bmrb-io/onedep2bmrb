@@ -144,8 +144,6 @@ class BMRBEntry( object ) :
     #
     #
     def write( self, out ) :
-        assert isinstance( out, file )
-
         errs = []
         rc = pdbx2bmrb.starobj.StarWriter.pretty_print( entry = self._db, dictionary = self._dic, 
             out = out, errlist = errs,
