@@ -275,14 +275,14 @@ class StarTable( object ) :
 
 # if there's pdbx_nmr_exptl_sample_conditions with conditions_id, map from that table only
 #
-        if self.table == "Sample_condition_list" :
-            if self._verbose : pprint.pprint( "Sample_condition_list", indent = 2 )
-            if not "ID" in list(self.cols.keys()) : return
+        if self.table == "Sample_condition_list":
+            if self._verbose: pprint.pprint("Sample_condition_list", indent=2)
+            if not "ID" in list(self.cols.keys()): return
             tc = self["ID"]
-            if not "_pdbx_nmr_exptl_sample_conditions.conditions_id" in tc : return
-            if tc["_pdbx_nmr_exptl_sample_conditions.conditions_id"].numvals > 0 :
-                for c in tc.pdbcols :
-                    if c[:34] != "_pdbx_nmr_exptl_sample_conditions." :
+            if not "_pdbx_nmr_exptl_sample_conditions.conditions_id" in tc: return
+            if tc["_pdbx_nmr_exptl_sample_conditions.conditions_id"].numvals > 0:
+                for c in list(tc.pdbcols.keys()):
+                    if c[:34] != "_pdbx_nmr_exptl_sample_conditions.":
                         del tc.pdbcols[c]
 
             return
