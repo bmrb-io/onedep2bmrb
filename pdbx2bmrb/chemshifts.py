@@ -4,6 +4,7 @@ import os
 import sys
 import re
 import pprint
+import functools
 
 import pdbx2bmrb
 
@@ -679,7 +680,20 @@ class ChemShifts( object ) :
 # otherwise fall through to startswith() match so e.g. "CA" matches "C"
 #
             atype = None
-            for nuc in sorted( list(pdbx2bmrb.BMRBEntry.ISOTOPES.keys()), cmp = lambda x,y : len( x ) > len( y ) and -1 or cmp (x, y) ) :
+            def cmp_by_length(x, y):
+                if len(x) > len(y):
+                    return -1
+                elif len(x) < len(y):
+                    return 1
+                else:
+                    if x < y:
+                        return -1
+                    elif x > y:
+                        return 1
+                    else:
+                        return 0
+        
+            for nuc in sorted( list(pdbx2bmrb.BMRBEntry.ISOTOPES.keys()), key=functools.cmp_to_key(cmp_by_length) ) :
 
 #                sys.stdout.write( "Checking '%s' vs '%s'\n" % (m.group( 1 )[:len( nuc ) + 1], nuc,) )
 
@@ -1365,9 +1379,9 @@ class ChemShifts( object ) :
 
         for comp in list(residues.keys()) :
             if comp in pdbx2bmrb.BMRBEntry.AMINO_ACIDS : 
-                order = sorted( list(residues[comp].keys()), cmp = self._cmp_aa_atoms )
+                order = sorted( list(residues[comp].keys()), key=functools.cmp_to_key(self._cmp_aa_atoms) )
             else :
-                order = sorted( list(residues[comp].keys()), cmp = self._cmp_other_atoms )
+                order = sorted( list(residues[comp].keys()), key=functools.cmp_to_key(self._cmp_other_atoms) )
             for i in range( len( order ) ) :
                 for a in list(residues[comp].keys()) :
                     if a == order[i] :
@@ -1483,9 +1497,17 @@ class ChemShifts( object ) :
 # unknown but same type (should never happen): compare types or the whole thing
 #
         if i == (len( pdbx2bmrb.BMRBEntry.NUC_ORDER ) - 1) :
-            rc = cmp( x[:1], y[:1] )
-            if rc != 0 : return rc
-            return cmp( x, y )
+            if x[:1] < y[:1]:
+                return -1
+            elif x[:1] > y[:1]:
+                return 1
+            else:
+                if x < y:
+                    return -1
+                elif x > y:
+                    return 1
+                else:
+                    return 0
 
 # same known type
 #
@@ -1508,9 +1530,17 @@ class ChemShifts( object ) :
 # unknown but same letter (should never happen): compare letters or the whole thing
 #
         if i == (len( grammae ) - 1) :
-            rc = cmp( x[1:2], y[1:2] )
-            if rc != 0 : return rc
-            return cmp( x, y )
+            if x[1:2] < y[1:2]:
+                return -1
+            elif x[1:2] > y[1:2]:
+                return 1
+            else:
+                if x < y:
+                    return -1
+                elif x > y:
+                    return 1
+                else:
+                    return 0
 
 # no number
 #
@@ -1550,17 +1580,32 @@ class ChemShifts( object ) :
         m = pat.search( x )
         if not m :
             sys.stderr.write( "WARN: atom name %s does not match pattern\n" % (x,) )
-            return cmp( x, y )
+            if x < y:
+                return -1
+            elif x > y:
+                return 1
+            else:
+                return 0
         n = pat.search( y )
         if not n :
             sys.stderr.write( "WARN: atom name %s does not match pattern\n" % (y,) )
-            return cmp( x, y )
+            if x < y:
+                return -1
+            elif x > y:
+                return 1
+            else:
+                return 0
 
         typex = m.group( 2 )
         typey = n.group( 2 )
         if (typex == "") or (typey == "") :
             sys.stderr.write( "WARN: strange atom name(s): %s, %s\n" % (x,y,) )
-            return cmp( x, y )
+            if x < y:
+                return -1
+            elif x > y:
+                return 1
+            else:
+                return 0
 
 # cmp types (ordered by array indices)
 #
@@ -1575,9 +1620,17 @@ class ChemShifts( object ) :
 # unknown but same type: compare types or the whole thing
 #
         if i == (len( pdbx2bmrb.BMRBEntry.NUC_ORDER ) - 1) :
-            rc = cmp( typex, typey )
-            if rc != 0 : return rc
-            return cmp( x, y )
+            if typex < typey:
+                return -1
+            elif typex > typey:
+                return 1
+            else:
+                if x < y:
+                    return -1
+                elif x > y:
+                    return 1
+                else:
+                    return 0
 
 # numbers
 #
@@ -1607,7 +1660,12 @@ class ChemShifts( object ) :
 # if we're still here
 #
 
-        return cmp( x, y )
+        if x < y:
+            return -1
+        elif x > y:
+            return 1
+        else:
+            return 0
 
 ####################################################################################################
 #
