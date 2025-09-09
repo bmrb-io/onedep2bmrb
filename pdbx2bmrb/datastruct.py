@@ -1,4 +1,4 @@
-#!/usr/bin/python -u
+#!/usr/bin/env python3
 #
 # helper class with some of the conversion functions
 # this all ought to be refactored into some semblance
@@ -61,20 +61,35 @@ class CifCol( object ) :
 
     # some tags need to come first
     #
-    def __cmp__( self, other ) :
+    def __lt__( self, other ) :
         assert isinstance( other, CifCol )
-        if self._table != other._table :
-            if self._table == "pdbx_nmr_exptl_sample_conditions" :
-                return -1
-            if self._table == "pdbx_nmr_software_task" :
-                return -1
-        return cmp( self.tag, other.tag )
+        if self.table != other.table :
+            if self.table == "pdbx_nmr_exptl_sample_conditions" :
+                return True
+            if self.table == "pdbx_nmr_software_task" :
+                return True
+            if other.table == "pdbx_nmr_exptl_sample_conditions" :
+                return False
+            if other.table == "pdbx_nmr_software_task" :
+                return False
+        return self.tag < other.tag
 
     def __eq__( self, other ) :
-        return (self.__cmp__( other ) == 0)
+        if not isinstance( other, CifCol ):
+            return False
+        return self.tag == other.tag and self.table == other.table
 
     def __ne__( self, other ) :
-        return (not self.__eq__( other ))
+        return not self.__eq__( other )
+
+    def __le__( self, other ) :
+        return self.__lt__( other ) or self.__eq__( other )
+
+    def __gt__( self, other ) :
+        return not self.__le__( other )
+
+    def __ge__( self, other ) :
+        return not self.__lt__( other )
 
     @property
     def tag( self ) :
@@ -275,14 +290,14 @@ class StarTable( object ) :
 
 # if there's pdbx_nmr_exptl_sample_conditions with conditions_id, map from that table only
 #
-        if self.table == "Sample_condition_list" :
-            if self._verbose : pprint.pprint( "Sample_condition_list", indent = 2 )
-            if not "ID" in list(self.cols.keys()) : return
+        if self.table == "Sample_condition_list":
+            if self._verbose: pprint.pprint("Sample_condition_list", indent=2)
+            if not "ID" in list(self.cols.keys()): return
             tc = self["ID"]
-            if not "_pdbx_nmr_exptl_sample_conditions.conditions_id" in tc : return
-            if tc["_pdbx_nmr_exptl_sample_conditions.conditions_id"].numvals > 0 :
-                for c in tc.pdbcols :
-                    if c[:34] != "_pdbx_nmr_exptl_sample_conditions." :
+            if not "_pdbx_nmr_exptl_sample_conditions.conditions_id" in tc: return
+            if tc["_pdbx_nmr_exptl_sample_conditions.conditions_id"].numvals > 0:
+                for c in list(tc.pdbcols.keys()):
+                    if c[:34] != "_pdbx_nmr_exptl_sample_conditions.":
                         del tc.pdbcols[c]
 
             return
@@ -297,7 +312,7 @@ class StarTable( object ) :
                 if self._verbose : pprint.pprint( tc, indent = 4 )
                 if "_entity.id" in tc :
                     if tc["_entity.id"].numvals > 0 :
-                        for c in tc.pdbcols :
+                        for c in list(tc.pdbcols.keys()) :
                             if self._verbose : pprint.pprint( c, indent = 6 )
                             if c[:8] != "_entity." :
                                 if self._verbose : pprint.pprint( "deleting", indent = 6 )
@@ -307,7 +322,7 @@ class StarTable( object ) :
                 if self._verbose : pprint.pprint( tc, indent = 4 )
                 if "_entity.pdbx_description" in tc :
                     if tc["_entity.pdbx_description"].numvals > 0 :
-                        for c in tc.pdbcols :
+                        for c in list(tc.pdbcols.keys()) :
                             if self._verbose : pprint.pprint( c, indent = 6 )
                             if c[:8] != "_entity." :
                                 if self._verbose : pprint.pprint( "deleting", indent = 6 )

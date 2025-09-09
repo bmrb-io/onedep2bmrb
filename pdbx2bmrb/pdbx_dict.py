@@ -1,14 +1,6 @@
-#!/usr/bin/python -u
-#
-#
-
-
+#!/usr/bin/env python3
 
 import sys
-import os
-
-_UP = os.path.realpath( os.path.join( os.path.split( __file__ )[0], ".." ) )
-sys.path.append( _UP )
 import pdbx2bmrb
 
 class Handler( pdbx2bmrb.sas.ContentHandler, pdbx2bmrb.sas.ErrorHandler ) :

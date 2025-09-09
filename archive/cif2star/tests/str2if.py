@@ -36,7 +36,7 @@ for l in lst :
     cmd = []
     cmd.extend( STR2IF )
     cmd.extend( ["-i", infile, "-o", iffile] )
-    if verbose : print("Running", cmd)
+    if verbose : print(("Running", cmd))
     p = subprocess.Popen( cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
     p.wait()
     if p.returncode != 0 :
@@ -56,7 +56,7 @@ for l in lst :
     cmd = []
     cmd.extend( IF2STR )
     cmd.extend( ["-i", iffile, "-o", outfile] )
-    if verbose : print("Running", cmd)
+    if verbose : print(("Running", cmd))
     p = subprocess.Popen( cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
     p.wait()
     if p.returncode != 0 :
@@ -76,7 +76,7 @@ for l in lst :
     cmd = []
     cmd.extend( DIFF )
     cmd.extend( [infile, outfile] )
-    if verbose : print("Running", cmd)
+    if verbose : print(("Running", cmd))
     p = subprocess.Popen( cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
 #    pid = p.pid
 #    p.wait()

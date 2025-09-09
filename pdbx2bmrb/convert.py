@@ -1,18 +1,14 @@
-#!/usr/bin/python -u
-#
-#
+#!/usr/bin/env python3
 
 
 import sys
-import os
 import re
 import sqlite3
 import configparser
 import pprint
+
 import psycopg2
 
-_UP = os.path.realpath( "%s/../" % (os.path.split( __file__ )[0],) )
-sys.path.append( _UP )
 import pdbx2bmrb
 
 ###############################################################################################
@@ -244,7 +240,7 @@ class OneDepToBmrb( object ) :
 #
                         if (pc.table == "pdbx_nmr_exptl_sample") and (pc.col == "concentration_range") :
                             if params["val"] is None : continue
-                            m = re.search( "^(.+)\s*-\s*(.+)$", params["val"].strip() )
+                            m = re.search( r"^(.+)\s*-\s*(.+)$", params["val"].strip() )
                             if not m : 
 #                                sys.stdout.write( "!! _pdbx_nmr_exptl_sample.concentration_range: no match\n" ) 
                                 continue
@@ -517,7 +513,7 @@ class OneDepToBmrb( object ) :
 
                     if verbose :
                         sys.stdout.write( sql + ">" )
-                        for (key,val) in params.items() : sys.stdout.write( " " + str( key ) + "," + str( val ) )
+                        for (key,val) in list(params.items()) : sys.stdout.write( " " + str( key ) + "," + str( val ) )
                         sys.stdout.write( "\n" )
                     curs2.execute( sql, params )
 
@@ -569,7 +565,7 @@ class OneDepToBmrb( object ) :
 
             if verbose :
                 sys.stdout.write( sql + ">" )
-                for (key,val) in params.items() : sys.stdout.write( " " + str( key ) + "," + str( val ) )
+                for (key,val) in list(params.items()) : sys.stdout.write( " " + str( key ) + "," + str( val ) )
                 sys.stdout.write( "\n" )
             curs2.execute( sql, params )
 
