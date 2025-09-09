@@ -821,19 +821,11 @@ class Notifier(object):
                 if pdbid is None:
                     continue
 
-                # !#$k psycopg2 and its quoting style.
-                #
                 etscurs.execute("select bmrbnum from entrylog where upper(pdb_code) like '%" + str(pdbid) + "%'")
-                #                try :
-                #                    etscurs.execute( etsqry, (pdbid,) )
-                #                except TypeError :
-                #                    sys.stderr.write( etsqry + "\n" )
-                #                    sys.stderr.write( str( pdbid ) + "\n" )
-                #                    raise
                 etsrow = etscurs.fetchone()
                 if etsrow is None:
                     continue
-                inscurs.execute(sql0, (etsrow[0], row[0],))
+                inscurs.execute(sql0, {"bmrbid": etsrow[0], "id": row[0]})
 
         # 20171110 - when a structure for existing BMRB entry is replaced, there is record in onedep with OBS as status
         #  there is no way to obsolete a OneDep ID in ETS w/o obsoleting the BMRB ID as well.
