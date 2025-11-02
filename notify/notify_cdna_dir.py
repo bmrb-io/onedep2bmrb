@@ -1,4 +1,4 @@
-#!/usr/bin/python -u
+#!/usr/bin/python3 -u
 #
 # check bmrb_entry_all.tsv file for status updates
 # check exchange directory for specific filenames
@@ -51,7 +51,6 @@
 # II. For updated files in a) -- add to "updated" list.
 #
 
-
 import os
 import sys
 import configparser
@@ -60,21 +59,24 @@ import csv
 import datetime
 import smtplib
 import email
-import pprint
 import re
 import glob
 import collections.abc
 import traceback
 import sqlite3
-
+import argparse
+import logging
+import json
+from email.mime.text import MIMEText
 from contextlib import contextmanager
-
 
 # wrapper for the methods
 #
 #
-class Notifier(object):
+class Notifier( object ):
+
     CONFFILE = "/bmrb/lib/python26/notify_cdna_rcsb.conf"
+
     DEPPAT = r"^D_\d+$"
     MDLPAT = r"D_\d+_model-([a-z]+)_P(\d+)\.[^\.]+\.V(\d+)\.gz$"
     CSPAT = r"D_\d+_cs-([a-z]+)_P(\d+)\.[^\.]+\.V(\d+)\.gz$"
@@ -432,8 +434,8 @@ class Notifier(object):
     #
     #
     @classmethod
-    def check(cls, config, recipients, verbose=False, update=True):
-        n = cls(conffile=config, verbose=verbose, update=update)
+    def check(cls, config, recipients, update=True):
+        n = cls(conffile=config, update=update)
         n._read_tsv()
         n._check_exchange_dir()
         n._check_obsolete()
@@ -453,10 +455,9 @@ class Notifier(object):
 
     #
     #
-    def __init__(self, conffile, verbose=False, update=True):
+    def __init__( self, conffile, update = True ):
         self._conn = None
-        self._verbose = bool(verbose)
-        self._dry_run = not bool(update)
+        self._dry_run = not bool( update )
         if conffile is not None:
             self._readprops(conffile)
         else:
@@ -477,19 +478,8 @@ class Notifier(object):
 
     #
     #
-    @property
-    def verbose(self):
-        """verbose flag"""
-        return self._verbose
-
-    @verbose.setter
-    def verbose(self, flag):
-        self._verbose = bool(flag)
-
-    #
-    #
     def _readprops(self, filename):
-        if self.verbose: sys.stdout.write("%s._readprops(%s)\n" % (self.__class__.__name__, filename))
+        logging.debug( "%s._readprops(%s)" % (self.__class__.__name__, filename,) )
         infile = os.path.realpath(filename)
         self._props = configparser.ConfigParser()
         self._props.read(infile)
@@ -514,7 +504,7 @@ class Notifier(object):
     #
     @contextmanager
     def _ets_connection(self):
-        if self.verbose: sys.stdout.write("%s._connect()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._connect()" % (self.__class__.__name__,) )
 
         if self._conn is not None:
             assert isinstance(self._conn, psycopg2.extensions.connection)
@@ -529,14 +519,14 @@ class Notifier(object):
 
         yield self._conn
 
-        if self.verbose: sys.stdout.write("%s._disconnect()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._disconnect()" % (self.__class__.__name__,) )
         self._conn.commit()
         self._conn.close()
 
     #
     #
     def _make_storage(self):
-        if self.verbose: sys.stdout.write("%s._make_storage()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._make_storage()" % (self.__class__.__name__,) )
         if self._store is not None:
             raise Exception("Storage already exists")
 
@@ -567,7 +557,7 @@ class Notifier(object):
     #
     #
     def _dump_storage(self):
-        if self.verbose: sys.stdout.write("%s._dump_storage()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._dump_storage()" % (self.__class__.__name__,) )
         if self._store is None:
             raise Exception("Storage is None")
 
@@ -611,14 +601,14 @@ class Notifier(object):
 
         curs.close()
 
-        sys.stdout.write("*********** errors *************\n")
-        pprint.pprint(self._errors)
+        sys.stdout.write( "*********** errors *************\n" )
+        sys.stdout.write( json.dumps( self._errors, indent = 2 ) )
 
     ###############################################################################################
     # read onedep status file
     #
     def _read_tsv(self):
-        if self.verbose: sys.stdout.write("%s._read_tsv()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._read_tsv()" % (self.__class__.__name__,) )
 
         sql = "insert into onedep (id,pdbid,bmrbid,status,depdate,title,authors) " \
               + "values (:id,:pdbid,:bmrbid,:status,:date,:title,:authors)"
@@ -651,7 +641,7 @@ class Notifier(object):
     # check for updated files in exchange area
     #
     def _check_exchange_dir(self):
-        if self.verbose: sys.stdout.write("%s._check_exchange_dir()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._check_exchange_dir()" % (self.__class__.__name__,) )
 
         pat = re.compile(self.DEPPAT)
         mdlpat = re.compile(self.MDLPAT)
@@ -659,13 +649,13 @@ class Notifier(object):
         files = {}
         dirname = os.path.realpath(self._props.get("cdna", "dirname"))
         for i in glob.glob("%s/*" % (dirname,)):
-            if self.verbose: sys.stdout.write("checking %s\n" % (i,))
+            logging.debug( "checking %s" % (i,) )
             if not os.path.isdir(i):
-                if self.verbose: sys.stdout.write("--> not a directory\n")
+                logging.debug( "--> not a directory" )
                 continue
             m = pat.search(os.path.split(i)[1])
             if not m:
-                if self.verbose: sys.stdout.write("--> des not match pattern\n")
+                logging.debug("--> does not match pattern" )
                 continue
             depnum = m.group(0)
 
@@ -695,9 +685,8 @@ class Notifier(object):
                 if (mstamp > 0) and (sstamp > 0):
                     files[depnum] = max(mstamp, sstamp)
 
-        if self.verbose:
-            sys.stdout.write("*** new ***\n")
-            pprint.pprint(files)
+        logging.debug( "*** new ***" )
+        logging.debug( json.dumps( files, indent = 2 ) )
 
         # compare to saved
         #
@@ -709,9 +698,8 @@ class Notifier(object):
                 for row in rdr:
                     old[row[0]] = row[1]
 
-        if self.verbose:
-            sys.stdout.write("*** old ***\n")
-            pprint.pprint(old)
+        logging.debug( "*** old ***" )
+        logging.debug( json.dumps( old, indent = 2 ) )
 
         # keep updated and new
         #
@@ -726,8 +714,7 @@ class Notifier(object):
 
             if row[0] != 1:
 
-                if self.verbose:
-                    sys.stdout.write(">> %s :  %d rows in status\n" % (i, row[0]))
+                logging.debug(">> %s :  %d rows in status" % (i, row[0],) )
 
                 self._errors.append({"id": i, "msg": "Error in OneDep status file, files are present in exchange area"})
                 continue
@@ -757,7 +744,7 @@ class Notifier(object):
     # (last field is optional: replaced with)
     #
     def _check_obsolete(self):
-        if self.verbose: sys.stdout.write("%s._check_obsolete()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._check_obsolete()" % (self.__class__.__name__,) )
 
         obsfile = os.path.realpath(self._props.get("cdna", "obsoletefile"))
         if not os.path.exists(obsfile):
@@ -858,8 +845,7 @@ class Notifier(object):
                     break
 
             if not found:
-                if self._verbose:
-                    sys.stdout.write("%s : %s/%s (%s) not found in ETS, deleting\n" % (row[1], row[0], row[2], row[3]))
+                logging.debug( "%s : %s/%s (%s) not found in ETS, deleting" % (row[1], row[0], row[2], row[3],) )
                 inscurs.execute("delete from onedep where id=:id", {"id": row[0]})
 
         # pass 3 : add ets info so we can tell old from new from updated etc.
@@ -888,10 +874,10 @@ class Notifier(object):
 
             # ETSQRY = "select bmrbnum,status,pdb_code,processed_by from entrylog where nmr_dep_code=%(depnum)s"
 
-            if self.verbose: sys.stdout.write((self.ETSQRY % {"depnum": row[0]}) + "\n")
-            etscurs.execute(self.ETSQRY, {"depnum": row[0]})
+            logging.debug( self.ETSQRY % {"depnum": row[0]} )
+            etscurs.execute( self.ETSQRY, {"depnum": row[0]} )
             etsrow = etscurs.fetchone()
-            if self.verbose: pprint.pprint(etsrow)
+            logging.debug( json.dumps( etsrow ) )
             if etsrow is not None:
                 params["id"] = row[0]
                 params["status"] = self._sanitize(etsrow[1])
@@ -902,7 +888,7 @@ class Notifier(object):
                 #                if self.verbose :
                 #                    sys.stdout.write( sql1 + "\n" )
                 #                    pprint.pprint( params )
-                inscurs.execute(sql1, params)
+                inscurs.execute( sql1, params )
 
             # not in ETS by dep. id
             # maybe new structure for existing BMRB ID
@@ -916,13 +902,10 @@ class Notifier(object):
                 #
                 #                pprint.pprint( row )
 
-                if self.verbose: sys.stdout.write((self.EXTQRY % {"id": row[1]}) + "\n")
-                etscurs.execute(self.EXTQRY, {"id": row[1]})
+                loggign.debug( self.EXTQRY % {"id": row[1]} )
+                etscurs.execute( self.EXTQRY, {"id": row[1]} )
                 etsrow = etscurs.fetchone()
-                if self.verbose: pprint.pprint(etsrow)
-
-                #                sys.stdout.write( "****%s****\n" % (self._sanitize( etsrow[1], upcase = True ),) )
-
+                logging.debug( json.dumps( etsrow ) )
                 if etsrow is not None:
                     params["bmrbid"] = row[1]
                     params["status"] = self._sanitize(etsrow[0])
@@ -944,7 +927,7 @@ class Notifier(object):
     # insert ETS records for new entries
     #
     def _insert_into_ets(self):
-        if self.verbose: sys.stdout.write("%s._insert_into_ets()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._insert_into_ets()\n" % (self.__class__.__name__,) )
 
         params = {}
         etscurs = self._conn.cursor()
@@ -954,15 +937,15 @@ class Notifier(object):
         qry = "select id,bmrbid,pdbid,depdate,authors,title,existing from onedep " \
               + "where etsstatus is null and status not in ('OBS','WDRN') order by id"
         curs = self._store.cursor()
-        if self.verbose: sys.stdout.write(qry + "\n")
+        logging.debug( qry )
         curs.execute(qry)
         while True:
             row = curs.fetchone()
             if row is None: break
-            if self.verbose: pprint.pprint(row)
+            logging.debug( json.dumps( row ) )
             if row[6] is not None:
                 if row[6] == 1:
-                    if self.verbose: sys.stdout.write("-- based on existing, skipping\n")
+                    logging.debug( "-- based on existing, skipping" )
                     continue
 
             # broken OneDep entries with "NO_BMRB_ID" or other junk
@@ -980,7 +963,7 @@ class Notifier(object):
                     self._errors.append({"id": row[0], "msg": "Error in OneDep status file: BMRB ID is %s" % (row[1],)})
                 continue
 
-            # this shold be done in one transaction really
+            # this should be done in one transaction really
             #
 
             # insert into entrylog (depnum,nmr_dep_code,bmrbnum,pdb_code,submission_date,status,onhold_status,
@@ -1000,20 +983,19 @@ class Notifier(object):
             params["today"] = datetime.date.today()
             params["molsys"] = row[5][:254]  # trim potentially long title
 
-            if self.verbose:
-                sys.stdout.write(self.ETSINS + "\n")
-                sys.stdout.write(self.LOGINS + "\n")
-                pprint.pprint(params)
+            logging.debug( self.ETSINS )
+            logging.debug( self.LOGINS )
+            logging.debug( json.dumps( params, indent = 2 ) )
             if not self._dry_run:
                 try:
                     etscurs.execute(self.ETSINS, params)
-                    if self.verbose: sys.stdout.write("-- %d rows inserted in entrylog\n" % (etscurs.rowcount,))
+                    logging.debug( "-- %d rows inserted in entrylog" % (etscurs.rowcount,) )
                     etscurs.execute(self.LOGINS, params)
-                    if self.verbose: sys.stdout.write("-- %d rows inserted in logtable\n" % (etscurs.rowcount,))
+                    logging.debug( "-- %d rows inserted in logtable" % (etscurs.rowcount,) )
                 except psycopg2.Error:
-                    sys.stdout.write(self.ETSINS + "\n")
-                    pprint.pprint(params)
-                    sys.stdout.write(self.LOGINS + "\n")
+                    logging.error( self.ETSINS )
+                    logging.error( json.dumps( params, indent = 2 ) )
+                    logging.error( self.LOGINS )
                     raise
 
         self._conn.commit()
@@ -1026,23 +1008,23 @@ class Notifier(object):
     # onedep: id,pdbid,bmrbid,status,depdate,title,authors,newfiles,etsstatus,etsbmrbid,etspdbid,annotator,existing,notify
 
     def _filter_updates(self):
-        if self.verbose: sys.stdout.write("%s._filter_updates()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._filter_updates()" % (self.__class__.__name__,) )
 
         curs = self._store.cursor()
 
         # ignore entries that are already obsolete/withdrawn @ bmrb
         #
         sql = "delete from onedep where etsstatus in ('obs','awd')"
-        if self.verbose: sys.stdout.write(sql)
+        logging.debug( sql )
         curs.execute(sql)
-        if self.verbose: sys.stdout.write(" -- %d rows\n" % (curs.rowcount,))
+        logging.debug( " -- %d rows\n" % (curs.rowcount,) )
 
         # ignore entries not yet in ETS and already OBS/WDRN in OneDep
         #
         sql = "delete from onedep where etsstatus is null and status in ('OBS','WDRN')"
-        if self.verbose: sys.stdout.write(sql)
+        logging.debug( sql )
         curs.execute(sql)
-        if self.verbose: sys.stdout.write(" -- %d rows\n" % (curs.rowcount,))
+        logging.debug( " -- %d rows" % (curs.rowcount,) )
 
         #        if self.verbose :
         #            curs.execute( "select * from onedep" )
@@ -1182,7 +1164,7 @@ class Notifier(object):
     # return none if there's nothing to report
     #
     def _make_mail_body(self):
-        if self.verbose: sys.stdout.write("%s._make_mail_body()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._make_mail_body()" % (self.__class__.__name__,) )
 
         # remove the ones we don't need to notify about
         #
@@ -1192,7 +1174,7 @@ class Notifier(object):
         row = curs.fetchone()
 
         if (len(self._errors) < 1) and (row[0] < 1):
-            if self.verbose: sys.stdout.write("No updates in %s\n" % (self._props.get("cdna", "dirname"),))
+            logging.debug("No updates in %s" % (self._props.get("cdna", "dirname"),) )
             curs.close()
             return None
 
@@ -1348,10 +1330,10 @@ class Notifier(object):
     # send message
     #
     def _send_mail(self, body, recipients):
-        if self.verbose: sys.stdout.write("%s._send_mail()\n" % (self.__class__.__name__,))
+        logging.debug( "%s._send_mail()\n" % (self.__class__.__name__,) )
 
         if (body is None) or (len(str(body).strip()) < 1):
-            if self.verbose: sys.stdout.write("-- nothing to send\n")
+            logging.debug( "-- nothing to send" )
             return
 
         if (recipients is None) or (len(recipients) < 1):
@@ -1363,7 +1345,6 @@ class Notifier(object):
         mailfrom = self._props.get("notify", "mailfrom")
         mailhost = self._props.get("notify", "server")
 
-        from email.mime.text import MIMEText
         msg = MIMEText(body)
         msg["From"] = mailfrom
         msg["Reply-To"] = addrs[0]
@@ -1378,9 +1359,8 @@ class Notifier(object):
 
         msg["To"] = addrs[0]
 
-        if self._verbose:
-            pprint.pprint(addrs)
-            pprint.pprint(str(msg))
+        logging.debug( json.dumps( addrs ) )
+        logging.debug( msg )
 
         sm = smtplib.SMTP(mailhost)
         try:
@@ -1390,8 +1370,8 @@ class Notifier(object):
             sys.stderr.write("failed to send:\n")
             traceback.print_exc()
             sys.stderr.write("---------------\n")
-            pprint.pprint(addrs, stream=sys.stderr)
-            pprint.pprint(msg, stream=sys.stderr)
+            logging.error( json.dumps( addrs ) )
+            logging.error( msg )
 
         sm.quit()
 
@@ -1400,26 +1380,40 @@ class Notifier(object):
 #
 #
 if __name__ == "__main__":
-    from optparse import OptionParser
 
-    usage = "usage: %prog [options] <e-mail> [e-mail ...]"
-    op = OptionParser(usage=usage)
-    op.add_option("-v", "--verbose", action="store_true", dest="verbose",
-                  default=False, help="print debugging messages to stdout")
-    op.add_option("-n", "--dry-run", action="store_false", dest="update",
-                  default=True, help="do not update ETS and file list")
-    op.add_option("-c", "--config", action="store", type="string", dest="config",
-                  default=Notifier.CONFFILE, help="config file")
-    #    op.add_option( "-d", "--dir", action = "store", type = "string", dest = "directory",
-    #                    default = WWPDBnotifier.DIRNAME, help = "incoming directory (what to monitor)" )
-    #    op.add_option( "-i", "--index", action = "store", type = "string", dest = "index",
-    #                    default = WWPDBnotifier.INDEX, help = "index file" )
-    #    op.add_option( "-n", "--no-update", action = "store_false", dest = "update",
-    #                    default = True, help = "don't update timestamp" )
+    op = argparse.ArgumentParser( prog = "notify", 
+                    description = "monitor OneDep exchange area for updates" )
 
-    (options, args) = op.parse_args()
+    op.add_argument( "-v", "--verbose", action = "store_true", dest = "verbose", 
+                    default = False, help = "log debugging info" )
+    op.add_argument( "-l", "--logfile", dest = "logfile", default = None,
+                    help = "log file")
+                    
+    op.add_argument( "-c", "--config", dest = "conffile", default = Notifier.CONFFILE, 
+                    help = "config file")
 
-    n = Notifier.check(config=options.config, recipients=args, verbose=options.verbose, update=options.update)
+    op.add_argument( "-n", "--dry-run", action = "store_false", dest = "update", 
+                    default = True, help = "do not update ETS and file list")
+
+    op.add_argument( "email", action = "extend", nargs = "*", help = "e-mail" )
+
+    args = op.parse_args()
+
+    logging.basicConfig(
+        level = (args.verbose and logging.DEBUG or logging.INFO),
+        format = "%(message)s",
+        handlers = [
+            logging.StreamHandler( sys.stdout )
+        ]
+    )
+    if args.logfile is not None :
+        logfile = os.path.realpath( args.logfile )
+        lgr = logging.getLogger()
+        fh = logging.FileHandler( logfle, mode = "w" )
+        fh.setFormatter( logging.Formatter( "%(asctime)s %(message)s", datefmt = "%Y-%m-%d %H:%M%S" ) )
+        lgr.addHandler( fh )
+
+    n = Notifier.check( config = args.conffile, recipients = args.email, update = args.update )
 
     sys.exit(0)
 
