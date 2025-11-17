@@ -1,4 +1,4 @@
-#!/usr/bin/python3 -u
+#!/usr/bin/env python
 #
 # check bmrb_entry_all.tsv file for status updates
 # check exchange directory for specific filenames
@@ -434,7 +434,7 @@ class Notifier( object ):
     #
     #
     @classmethod
-    def check(cls, config, recipients, update=True):
+    def check(cls, config, recipients, update=True, verbose = False):
         n = cls(conffile=config, update=update)
         n._read_tsv()
         n._check_exchange_dir()
@@ -563,9 +563,9 @@ class Notifier( object ):
 
         sql = "select id,pdbid,bmrbid,status,depdate,title,authors,newfiles,etsstatus,etsbmrbid,etspdbid," \
               + "annotator,existing,notify from onedep order by id"
-        sys.stdout.write("*********** onedep *************\n")
-        sys.stdout.write('"dep.id","pdb.id","bmrb.id","dep.status","dep.date","title","authors",')
-        sys.stdout.write('"new.files","ets.status","ets.bmrb.id","ets.pdb.id","annotator","existing","notify"\n')
+        logging.debug( "*********** onedep *************" )
+        logging.debug( '"dep.id","pdb.id","bmrb.id","dep.status","dep.date","title","authors",' \
+                    + '"new.files","ets.status","ets.bmrb.id","ets.pdb.id","annotator","existing","notify"' )
         curs = self._store.cursor()
         curs.execute(sql)
         while True:
@@ -582,11 +582,11 @@ class Notifier( object ):
                 else:
                     string += ","
             string = string[:-1]
-            sys.stdout.write(string + "\n")
+            logging.debug( string )
 
         sql = "select oldid,newid from obsolete order by oldid"
-        sys.stdout.write("*********** obsolete *************\n")
-        sys.stdout.write('"pdb.id","new.id"\n')
+        logging.debug( "*********** obsolete *************" )
+        logging.debug( '"pdb.id","new.id"' )
         curs.execute(sql)
         while True:
             row = curs.fetchone()
@@ -597,12 +597,12 @@ class Notifier( object ):
                     string += '"' + row[i] + '",'
                 else:
                     string += ","
-            sys.stdout.write(string + "\n")
+            logging.debug( string )
 
         curs.close()
 
-        sys.stdout.write( "*********** errors *************\n" )
-        sys.stdout.write( json.dumps( self._errors, indent = 2 ) )
+        logging.debug( "*********** errors *************" )
+        logging.debug( json.dumps( self._errors, indent = 2 ) )
 
     ###############################################################################################
     # read onedep status file
@@ -902,7 +902,7 @@ class Notifier( object ):
                 #
                 #                pprint.pprint( row )
 
-                loggign.debug( self.EXTQRY % {"id": row[1]} )
+                logging.debug( self.EXTQRY % {"id": row[1]} )
                 etscurs.execute( self.EXTQRY, {"id": row[1]} )
                 etsrow = etscurs.fetchone()
                 logging.debug( json.dumps( etsrow ) )
@@ -1145,12 +1145,12 @@ class Notifier( object ):
         # if we are processing and there are new files
         #
         qry = "select id from onedep where etsstatus not in ('new','nd') and newfiles=1 order by id"
-        if self.verbose: sys.stdout.write(qry + "\n")
+        logging.debug( qry )
         curs.execute(qry)
         while True:
             row = curs.fetchone()
             if row is None: break
-            if self.verbose: pprint.pprint(row)
+            logging.debug( row )
             inscurs.execute(sql, {"id": row[0]})
 
         # this is still being processed upstream and may change
@@ -1388,7 +1388,7 @@ if __name__ == "__main__":
                     default = False, help = "log debugging info" )
     op.add_argument( "-l", "--logfile", dest = "logfile", default = None,
                     help = "log file")
-                    
+
     op.add_argument( "-c", "--config", dest = "conffile", default = Notifier.CONFFILE, 
                     help = "config file")
 
@@ -1409,11 +1409,11 @@ if __name__ == "__main__":
     if args.logfile is not None :
         logfile = os.path.realpath( args.logfile )
         lgr = logging.getLogger()
-        fh = logging.FileHandler( logfle, mode = "w" )
+        fh = logging.FileHandler( logfile, mode = "w" )
         fh.setFormatter( logging.Formatter( "%(asctime)s %(message)s", datefmt = "%Y-%m-%d %H:%M%S" ) )
         lgr.addHandler( fh )
 
-    n = Notifier.check( config = args.conffile, recipients = args.email, update = args.update )
+    n = Notifier.check( config = args.conffile, recipients = args.email, update = args.update, verbose = args.verbose )
 
     sys.exit(0)
 
