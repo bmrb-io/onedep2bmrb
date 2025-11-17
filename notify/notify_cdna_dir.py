@@ -931,12 +931,24 @@ class Notifier( object ):
 
         params = {}
         etscurs = self._conn.cursor()
+        curs = self._store.cursor()
+
+#FIXME
+        # multiple new depositions with same BMRB ID
+        #
+        qry = "select id,bmrbid,count( bmrbid ) from onedep " \
+              + "where etsstatus is null and status not in ('OBS','WDRN') " \
+              + "group by bmrbid order by id"
+        logging.debug( qry )
+        curs.execute(qry)
+        for row in curs :
+            self._errors.append({"id": row[0], "msg": "%s rows in OneDep status file for BMRB ID %s. ETS update will fail." % (row[2],row[1],)})
+
 
         # new depositions: depids not in ets except structures for existing bmrb entries
         #
         qry = "select id,bmrbid,pdbid,depdate,authors,title,existing from onedep " \
               + "where etsstatus is null and status not in ('OBS','WDRN') order by id"
-        curs = self._store.cursor()
         logging.debug( qry )
         curs.execute(qry)
         while True:
