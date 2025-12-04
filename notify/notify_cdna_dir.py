@@ -933,18 +933,21 @@ class Notifier( object ):
         etscurs = self._conn.cursor()
         curs = self._store.cursor()
 
-#FIXME
-        # multiple new depositions with same BMRB ID
+        # handle duplicate new depositions with same BMRB ID
         #
-        qry = "select id,bmrbid,count( bmrbid ) from onedep " \
-              + "where etsstatus is null and status not in ('OBS','WDRN') " \
-              + "group by bmrbid order by id"
+        qry = "select bmrbid, group_concat(id), count(*) from onedep " \
+                             + "where etsstatus is null and status not in ('OBS','WDRN') " \
+                             + "group by bmrbid having count(*) > 1"
         logging.debug( qry )
         curs.execute(qry)
-        for row in curs :
-            self._errors.append({"id": row[0], "msg": "%s rows in OneDep status file for BMRB ID %s. ETS update will fail." % (row[2],row[1],)})
-
-
+        for bmrbid, id_list, count_ in curs.fetchall():
+            ids = id_list.split(",")
+            keep = ids[0]
+            for d in ids[1:]:
+                    self._store.execute("update onedep set existing=1 where id=:id", {"id": d})
+            msg = "%s rows in OneDep status file share BMRB ID %s. Only %s will be inserted; others marked existing." % (count_, bmrbid, keep)
+            self._errors.append({"id": keep, "msg": msg})
+            logging.warning(msg)
         # new depositions: depids not in ets except structures for existing bmrb entries
         #
         qry = "select id,bmrbid,pdbid,depdate,authors,title,existing from onedep " \
