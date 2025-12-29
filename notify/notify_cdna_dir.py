@@ -1000,7 +1000,7 @@ class Notifier( object ):
 
             logging.debug( self.ETSINS )
             logging.debug( self.LOGINS )
-            logging.debug( json.dumps( params, indent = 2 ) )
+            logging.debug( json.dumps( params, indent = 2, default = str ) )
             if not self._dry_run:
                 try:
                     etscurs.execute(self.ETSINS, params)
@@ -1009,7 +1009,7 @@ class Notifier( object ):
                     logging.debug( "-- %d rows inserted in logtable" % (etscurs.rowcount,) )
                 except psycopg2.Error:
                     logging.error( self.ETSINS )
-                    logging.error( json.dumps( params, indent = 2 ) )
+                    logging.error( json.dumps( params, indent = 2, default = str ) )
                     logging.error( self.LOGINS )
                     raise
 
