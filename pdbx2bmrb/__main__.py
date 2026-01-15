@@ -384,6 +384,14 @@ if __name__ == "__main__" :
                 sys.stderr.write( "File not found: %s\n" % (csfile,) )
 
             else :
+# check that Assigned_chem_shift_list exists (from pdbx_nmr_assigned_chem_shift_list in CIF)
+#
+                rs = star._db.query( 'select count(*) from "Assigned_chem_shift_list"' )
+                row = next( rs )
+                if row[0] == 0 :
+                    raise Exception( "Cannot merge chemical shifts: Assigned_chem_shift_list is empty. "
+                        "The input CIF file is missing the required 'pdbx_nmr_assigned_chem_shift_list' table." )
+
                 with pdbx2bmrb.timer( "merging chemical shifts", verbose = options.verbose ) :
                     cs = pdbx2bmrb.ChemShiftHandler.parse( infile = csfile, entry = star, 
                             verbose = ((options.debug & 64) != 0 and True or False) )
