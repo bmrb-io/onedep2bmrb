@@ -5,7 +5,7 @@ import time
 from contextlib import contextmanager
 
 STAROBJ_PATH = "/zdrive/work/home/jon/git/starobj"
-sys.path.extend([SAS_PATH, STAROBJ_PATH])
+sys.path.extend([STAROBJ_PATH])
 
 import sas
 import starobj
