@@ -59,6 +59,7 @@ import csv
 import datetime
 import smtplib
 import email
+import email.utils
 import re
 import glob
 import collections.abc
@@ -1385,7 +1386,7 @@ class Notifier( object ):
         msg["Reply-To"] = addrs[0]
 
         # Fri, 17 Jun 2016 12:59:57 -0500
-        msg["Date"] = datetime.datetime.now().ctime()
+        msg["Date"] = email.utils.formatdate(localtime=True)
 
         # quick'n'dirty: last part of dirname is pdbe or rcsb
         #
