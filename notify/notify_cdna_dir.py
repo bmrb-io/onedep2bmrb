@@ -1360,6 +1360,26 @@ class Notifier( object ):
         mailfrom = self._props.get("notify", "mailfrom")
         mailhost = self._props.get("notify", "server")
 
+        # optional SMTP settings: port, authentication, and TLS.
+        # absent = unauthenticated connection on the default port (back-compat).
+        #
+        if self._props.has_option("notify", "port"):
+            mailport = self._props.getint("notify", "port")
+        else:
+            mailport = 0
+        username = None
+        if self._props.has_option("notify", "username"):
+            username = self._sanitize(self._props.get("notify", "username"))
+        password = None
+        if self._props.has_option("notify", "password"):
+            password = self._props.get("notify", "password")
+        use_ssl = False
+        if self._props.has_option("notify", "ssl"):
+            use_ssl = self._props.getboolean("notify", "ssl")
+        use_starttls = False
+        if self._props.has_option("notify", "starttls"):
+            use_starttls = self._props.getboolean("notify", "starttls")
+
         msg = MIMEText(body)
         msg["From"] = mailfrom
         msg["Reply-To"] = addrs[0]
@@ -1377,8 +1397,15 @@ class Notifier( object ):
         logging.debug( json.dumps( addrs ) )
         logging.debug( msg )
 
-        sm = smtplib.SMTP(mailhost)
+        if use_ssl:
+            sm = smtplib.SMTP_SSL(mailhost, mailport)
+        else:
+            sm = smtplib.SMTP(mailhost, mailport)
         try:
+            if use_starttls:
+                sm.starttls()
+            if username is not None:
+                sm.login(username, password)
             sm.sendmail(mailfrom, addrs, msg.as_string())
         except:
             # let cron figure it out
