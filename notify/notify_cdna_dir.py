@@ -1352,11 +1352,23 @@ class Notifier( object ):
             logging.debug( "-- nothing to send" )
             return
 
+        # mailto in the config file may hold several addresses separated by
+        # commas and/or whitespace.
+        #
         if (recipients is None) or (len(recipients) < 1):
-            addrs = [self._props.get("notify", "mailto")]
+            recipients = re.split(r"[,\s]+", self._props.get("notify", "mailto"))
         else:
             assert isinstance(recipients, collections.abc.Iterable)
-            addrs = list(set(recipients))
+
+        addrs = []
+        for i in recipients:
+            addr = self._sanitize(i)
+            if (addr is not None) and (addr not in addrs):
+                addrs.append(addr)
+
+        if len(addrs) < 1:
+            logging.error("no recipients, not sending")
+            return
 
         mailfrom = self._props.get("notify", "mailfrom")
         mailhost = self._props.get("notify", "server")
@@ -1383,7 +1395,7 @@ class Notifier( object ):
 
         msg = MIMEText(body)
         msg["From"] = mailfrom
-        msg["Reply-To"] = addrs[0]
+        msg["Reply-To"] = ", ".join(addrs)
 
         # Fri, 17 Jun 2016 12:59:57 -0500
         msg["Date"] = email.utils.formatdate(localtime=True)
@@ -1393,7 +1405,7 @@ class Notifier( object ):
         msg["Subject"] = "WWPDB (%s) status update" \
                          % (str(os.path.split(self._props.get("cdna", "dirname"))[1]).upper())
 
-        msg["To"] = addrs[0]
+        msg["To"] = ", ".join(addrs)
 
         logging.debug( json.dumps( addrs ) )
         logging.debug( msg )
